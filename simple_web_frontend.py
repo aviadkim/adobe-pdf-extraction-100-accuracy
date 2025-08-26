@@ -5,11 +5,13 @@ Clean web interface for testing PDF upload and processing
 """
 
 from flask import Flask, render_template_string, request, jsonify, send_file
+from flask_cors import CORS
 import os
 import requests
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all domains
 app.secret_key = 'test-secret-key'
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
