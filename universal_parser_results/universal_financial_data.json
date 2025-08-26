@@ -1,0 +1,33 @@
+{
+  "document_analysis": {
+    "detected_format": "unknown",
+    "detected_institution": "unknown",
+    "detected_language": "english",
+    "detected_region": "unknown",
+    "confidence": 0.0
+  },
+  "securities": [],
+  "summary": {
+    "total_securities": 0,
+    "high_confidence_securities": 0,
+    "extraction_methods_used": [],
+    "detected_format": "unknown",
+    "detected_institution": "unknown"
+  },
+  "parser_info": {
+    "version": "1.0",
+    "universal_parser": true,
+    "supported_formats": [
+      "swiss",
+      "us",
+      "european",
+      "generic"
+    ],
+    "available_apis": [
+      "azure",
+      "adobe",
+      "google",
+      "aws"
+    ]
+  }
+}

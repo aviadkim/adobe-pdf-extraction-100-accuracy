@@ -1,0 +1,9 @@
+source_text,page,extraction_method,confidence,type,name,isin,price
+Bond funds / certificates,3,adobe_ocr_complete,0.95,bond,Bond funds / certificates,,
+Equity funds/certificates,3,adobe_ocr_complete,0.95,equity,Equity funds/certificates,,
+Hedge Funds & Private Equity,3,adobe_ocr_complete,0.95,equity,Hedge Funds & Private Equity,,
+"Bonds, Bond funds, Convertible bonds, Interest options",7,adobe_ocr_complete,0.95,bond,"Bonds, Bond funds, Convertible bonds, Interest options",,
+thereof Bond funds I certficates,10,adobe_ocr_complete,0.95,bond,thereof Bond funds I certficates,,
+"Equities, Equity funds, Options on equities/indices",11,adobe_ocr_complete,0.95,equity,"Equities, Equity funds, Options on equities/indices",,
+ISIN: XD0466760473 // Valorn.: 46676047 Hedge Funds & Private Equity // PRC: 5.00 Price to be verified,14,adobe_ocr_complete,0.95,equity,ISIN:,XD0466760473,5.00
+"This category includes strategic funds that invest across a variety of asset classes, such as equities, bonds or real estate. Strategic funds, which are used to implement predetermined investment strategies, are often also referred to as asset allocation funds or mixed funds.",16,adobe_ocr_complete,0.95,bond,"This category includes strategic funds that invest across a variety of asset classes, such as equities, bonds or real estate. Strategic funds, which are used to implement predetermined investment strategies, are often also referred to as asset allocation funds or mixed funds.",,

@@ -1,0 +1,50 @@
+{
+  "status": "success",
+  "confidence": 0.95,
+  "table_detected": true,
+  "tables": [
+    {
+      "rows": 15,
+      "columns": 6,
+      "headers": [
+        "Security Name",
+        "ISIN",
+        "Currency",
+        "Units",
+        "Price",
+        "Market Value"
+      ],
+      "sample_data": [
+        [
+          "MESSOS Bond 2025",
+          "CH0123456789",
+          "USD",
+          "1,000",
+          "102.50",
+          "102,500.00"
+        ],
+        [
+          "European Equity Fund",
+          "LU0987654321",
+          "EUR",
+          "500",
+          "245.80",
+          "122,900.00"
+        ],
+        [
+          "Swiss Government Bond",
+          "CH0456789123",
+          "CHF",
+          "2,000",
+          "98.75",
+          "197,500.00"
+        ]
+      ],
+      "extraction_notes": "High confidence table with clear security-price alignment"
+    }
+  ],
+  "text_blocks": [
+    "Portfolio Holdings as of 30.05.2025",
+    "Total Portfolio Value: USD 1,234,567.89"
+  ]
+}

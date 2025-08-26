@@ -1,0 +1,10 @@
+{
+  "user_email": "mike@startupxyz.com",
+  "company": "StartupXYZ",
+  "plan": "standard",
+  "signup_date": "2025-08-24T09:34:00.121544",
+  "credentials_path": "saas_users/mike_at_startupxyz_com/adobe_credentials.json",
+  "api_endpoint": "https://pdf-services.adobe.io",
+  "monthly_quota": 1000,
+  "estimated_pdfs": 500
+}

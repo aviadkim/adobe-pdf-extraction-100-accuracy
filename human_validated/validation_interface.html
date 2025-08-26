@@ -1,0 +1,552 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Financial Data Validation Interface</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; }
+                .container { max-width: 1600px; margin: 0 auto; background: white; }
+                .header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+                .sidebar { position: fixed; left: 0; top: 0; width: 300px; height: 100vh; background: #34495e; color: white; padding: 20px; overflow-y: auto; }
+                .main-content { margin-left: 320px; padding: 20px; }
+                .section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: white; }
+                .validation-item { margin: 15px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; background: #f9f9f9; }
+                .correct { border-color: #28a745; background: #d4edda; }
+                .incorrect { border-color: #dc3545; background: #f8d7da; }
+                .needs-review { border-color: #ffc107; background: #fff3cd; }
+                .image-preview { max-width: 100%; height: auto; border: 1px solid #ccc; margin: 10px 0; }
+                .edit-field { width: 100%; padding: 8px; margin: 5px 0; border: 1px solid #ddd; border-radius: 3px; }
+                .btn { padding: 10px 15px; margin: 5px; border: none; border-radius: 3px; cursor: pointer; }
+                .btn-success { background: #28a745; color: white; }
+                .btn-warning { background: #ffc107; color: black; }
+                .btn-danger { background: #dc3545; color: white; }
+                .btn-primary { background: #007bff; color: white; }
+                .nav-item { padding: 10px; margin: 5px 0; background: #3498db; border-radius: 3px; cursor: pointer; }
+                .nav-item:hover { background: #2980b9; }
+                .confidence-bar { width: 100%; height: 20px; background: #e9ecef; border-radius: 10px; overflow: hidden; }
+                .confidence-fill { height: 100%; background: linear-gradient(90deg, #dc3545 0%, #ffc107 50%, #28a745 100%); }
+                .data-table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                .data-table th, .data-table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+                .data-table th { background: #f8f9fa; }
+                .editable { background: #fff3cd; cursor: pointer; }
+                .editable:hover { background: #ffeaa7; }
+            </style>
+            <script>
+                let corrections = {};
+                
+                function markCorrect(itemId) {
+                    const item = document.getElementById(itemId);
+                    item.className = 'validation-item correct';
+                    corrections[itemId] = { status: 'correct', value: item.querySelector('.extracted-value').textContent };
+                    updateProgress();
+                }
+                
+                function markIncorrect(itemId) {
+                    const item = document.getElementById(itemId);
+                    item.className = 'validation-item incorrect';
+                    const correctedValue = prompt('Enter the correct value:');
+                    if (correctedValue) {
+                        corrections[itemId] = { status: 'corrected', value: correctedValue };
+                        item.querySelector('.correction-note').innerHTML = `<strong>Corrected to:</strong> ${correctedValue}`;
+                    }
+                    updateProgress();
+                }
+                
+                function needsReview(itemId) {
+                    const item = document.getElementById(itemId);
+                    item.className = 'validation-item needs-review';
+                    const note = prompt('Add a review note:');
+                    if (note) {
+                        corrections[itemId] = { status: 'review', note: note };
+                        item.querySelector('.correction-note').innerHTML = `<strong>Review Note:</strong> ${note}`;
+                    }
+                    updateProgress();
+                }
+                
+                function editValue(itemId, field) {
+                    const currentValue = document.getElementById(itemId + '_' + field).textContent;
+                    const newValue = prompt(`Edit ${field}:`, currentValue);
+                    if (newValue && newValue !== currentValue) {
+                        document.getElementById(itemId + '_' + field).textContent = newValue;
+                        if (!corrections[itemId]) corrections[itemId] = {};
+                        corrections[itemId][field] = newValue;
+                        markIncorrect(itemId);
+                    }
+                }
+                
+                function updateProgress() {
+                    const totalItems = document.querySelectorAll('.validation-item').length;
+                    const reviewedItems = Object.keys(corrections).length;
+                    const progress = (reviewedItems / totalItems) * 100;
+                    
+                    document.getElementById('progress-bar').style.width = progress + '%';
+                    document.getElementById('progress-text').textContent = `${reviewedItems}/${totalItems} items reviewed (${Math.round(progress)}%)`;
+                }
+                
+                function exportCorrections() {
+                    const dataStr = JSON.stringify(corrections, null, 2);
+                    const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                    const url = URL.createObjectURL(dataBlob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'validation_corrections.json';
+                    link.click();
+                }
+                
+                function showImage(imagePath) {
+                    window.open(imagePath, '_blank');
+                }
+            </script>
+        </head>
+        <body>
+            <div class="sidebar">
+                <h3>🔍 Validation Progress</h3>
+                <div class="confidence-bar">
+                    <div class="confidence-fill" id="progress-bar" style="width: 0%;"></div>
+                </div>
+                <p id="progress-text">0/0 items reviewed (0%)</p>
+                
+                <h3>📋 Navigation</h3>
+                <div class="nav-item" onclick="document.getElementById('client-info').scrollIntoView()">Client Information</div>
+                <div class="nav-item" onclick="document.getElementById('financial-data').scrollIntoView()">Financial Data</div>
+                <div class="nav-item" onclick="document.getElementById('image-analysis').scrollIntoView()">Image Analysis</div>
+                <div class="nav-item" onclick="document.getElementById('table-data').scrollIntoView()">Table Data</div>
+                
+                <h3>🛠️ Actions</h3>
+                <button class="btn btn-primary" onclick="exportCorrections()">Export Corrections</button>
+                <button class="btn btn-success" onclick="alert('Validation complete! Check exported corrections.')">Complete Validation</button>
+                
+                <h3>📊 Legend</h3>
+                <div style="padding: 5px; margin: 5px 0; background: #d4edda; border-radius: 3px;">✅ Correct</div>
+                <div style="padding: 5px; margin: 5px 0; background: #f8d7da; border-radius: 3px;">❌ Incorrect</div>
+                <div style="padding: 5px; margin: 5px 0; background: #fff3cd; border-radius: 3px;">⚠️ Needs Review</div>
+            </div>
+            
+            <div class="main-content">
+                <div class="header">
+                    <h1>🏦 Financial Data Validation Interface</h1>
+                    <p>Review and correct extracted data from Messos PDF</p>
+                    <p><strong>Overall Extraction Confidence: 86.2%</strong></p>
+                </div>
+        
+                <div class="section" id="client-info">
+                    <h2>🏦 Client Information</h2>
+                    <div class="validation-item" id="client_1">
+                        <h4>Company Name</h4>
+                        <p class="extracted-value" id="client_1_company" onclick="editValue('client_1', 'company')">MESSOS ENTERPRISES LTD.</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('client_1')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('client_1')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('client_1')">⚠️ Review</button>
+                    </div>
+                    
+                    <div class="validation-item" id="client_2">
+                        <h4>Client Number</h4>
+                        <p class="extracted-value" id="client_2_number" onclick="editValue('client_2', 'number')">366223</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('client_2')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('client_2')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('client_2')">⚠️ Review</button>
+                    </div>
+                    
+                    <div class="validation-item" id="client_3">
+                        <h4>Valuation Date</h4>
+                        <p class="extracted-value" id="client_3_date" onclick="editValue('client_3', 'date')">30.05.2025</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('client_3')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('client_3')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('client_3')">⚠️ Review</button>
+                    </div>
+                    
+                    <div class="validation-item" id="client_4">
+                        <h4>Valuation Currency</h4>
+                        <p class="extracted-value" id="client_4_currency" onclick="editValue('client_4', 'currency')">USD</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('client_4')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('client_4')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('client_4')">⚠️ Review</button>
+                    </div>
+                </div>
+        
+                <div class="section" id="financial-data">
+                    <h2>💰 Financial Data Elements</h2>
+                    <p>Review each extracted financial element for accuracy:</p>
+        
+                    <div class="validation-item" id="financial_0">
+                        <h4>Category: Client_Info</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_0_text" onclick="editValue('financial_0', 'text')">Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Med...</span></p>
+                        <p><strong>Page:</strong> 0</p>
+                        <p><strong>Position:</strong> (-0, 40)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_0')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_0')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_0')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_1">
+                        <h4>Category: Client_Info</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_1_text" onclick="editValue('financial_1', 'text')">MESSOS ENTERPRISES LTD.</span></p>
+                        <p><strong>Page:</strong> 0</p>
+                        <p><strong>Position:</strong> (155, 377)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_1')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_1')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_1')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_2">
+                        <h4>Category: Client_Info</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_2_text" onclick="editValue('financial_2', 'text')">MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223</span></p>
+                        <p><strong>Page:</strong> 1</p>
+                        <p><strong>Position:</strong> (609, 532)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_2')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_2')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_2')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_3">
+                        <h4>Category: Securities</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_3_text" onclick="editValue('financial_3', 'text')">Bonds 6</span></p>
+                        <p><strong>Page:</strong> 1</p>
+                        <p><strong>Position:</strong> (79, 366)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_3')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_3')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_3')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_4">
+                        <h4>Category: Prices</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_4_text" onclick="editValue('financial_4', 'text')">Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Med...</span></p>
+                        <p><strong>Page:</strong> 0</p>
+                        <p><strong>Position:</strong> (-0, 40)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_4')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_4')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_4')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_5">
+                        <h4>Category: Valuations</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_5_text" onclick="editValue('financial_5', 'text')">Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Med...</span></p>
+                        <p><strong>Page:</strong> 0</p>
+                        <p><strong>Position:</strong> (-0, 40)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_5')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_5')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_5')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_6">
+                        <h4>Category: Valuations</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_6_text" onclick="editValue('financial_6', 'text')">Valuation as of 30.05.2025</span></p>
+                        <p><strong>Page:</strong> 0</p>
+                        <p><strong>Position:</strong> (154, 409)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_6')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_6')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_6')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_7">
+                        <h4>Category: Valuations</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_7_text" onclick="editValue('financial_7', 'text')">MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223</span></p>
+                        <p><strong>Page:</strong> 1</p>
+                        <p><strong>Position:</strong> (609, 532)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_7')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_7')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_7')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_8">
+                        <h4>Category: Dates</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_8_text" onclick="editValue('financial_8', 'text')">Valuation as of 30.05.2025</span></p>
+                        <p><strong>Page:</strong> 0</p>
+                        <p><strong>Position:</strong> (154, 409)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_8')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_8')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_8')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_9">
+                        <h4>Category: Dates</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_9_text" onclick="editValue('financial_9', 'text')">Print date 31.05.2025 // Page I</span></p>
+                        <p><strong>Page:</strong> 1</p>
+                        <p><strong>Position:</strong> (623, 51)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_9')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_9')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_9')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_10">
+                        <h4>Category: Dates</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_10_text" onclick="editValue('financial_10', 'text')">MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223</span></p>
+                        <p><strong>Page:</strong> 1</p>
+                        <p><strong>Position:</strong> (609, 532)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_10')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_10')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_10')">⚠️ Review</button>
+                    </div>
+            
+                    <div class="validation-item" id="financial_11">
+                        <h4>Category: Currencies</h4>
+                        <p><strong>Text:</strong> <span class="extracted-value editable" id="financial_11_text" onclick="editValue('financial_11', 'text')">Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Med...</span></p>
+                        <p><strong>Page:</strong> 0</p>
+                        <p><strong>Position:</strong> (-0, 40)</p>
+                        <div class="correction-note"></div>
+                        <button class="btn btn-success" onclick="markCorrect('financial_11')">✅ Correct</button>
+                        <button class="btn btn-danger" onclick="markIncorrect('financial_11')">❌ Incorrect</button>
+                        <button class="btn btn-warning" onclick="needsReview('financial_11')">⚠️ Review</button>
+                    </div>
+            
+                <div class="section" id="image-analysis">
+                    <h2>🖼️ Image Analysis & Table Candidates</h2>
+                    <p>Review extracted images and their potential for containing financial tables:</p>
+        
+                        <div class="validation-item" id="image_1">
+                            <h4>fileoutpart1.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 1,990,086 bytes (2444x1554)</p>
+                            <p><strong>Predicted Content:</strong> Main securities holdings table, Likely main table of contents or holdings</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart1.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart1.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_1')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_1')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_1')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_3">
+                            <h4>fileoutpart11.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 382,151 bytes (2275x3054)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart11.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart11.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_3')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_3')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_3')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_4">
+                            <h4>fileoutpart12.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 403,727 bytes (2275x3054)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart12.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart12.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_4')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_4')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_4')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_5">
+                            <h4>fileoutpart13.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 379,612 bytes (2275x3054)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart13.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart13.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_5')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_5')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_5')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_6">
+                            <h4>fileoutpart14.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 375,038 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart14.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart14.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_6')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_6')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_6')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_7">
+                            <h4>fileoutpart15.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 393,284 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart15.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart15.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_7')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_7')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_7')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_8">
+                            <h4>fileoutpart16.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 616,947 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart16.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart16.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_8')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_8')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_8')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_9">
+                            <h4>fileoutpart17.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 612,240 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart17.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart17.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_9')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_9')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_9')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_10">
+                            <h4>fileoutpart18.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 591,029 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart18.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart18.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_10')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_10')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_10')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_11">
+                            <h4>fileoutpart19.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 507,823 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart19.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart19.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_11')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_11')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_11')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_13">
+                            <h4>fileoutpart20.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 360,509 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart20.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart20.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_13')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_13')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_13')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_14">
+                            <h4>fileoutpart21.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 602,139 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table, Later document content - appendices/notes</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart21.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart21.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_14')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_14')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_14')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_15">
+                            <h4>fileoutpart22.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 557,470 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table, Later document content - appendices/notes</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart22.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart22.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_15')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_15')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_15')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_16">
+                            <h4>fileoutpart23.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 365,073 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table, Later document content - appendices/notes</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart23.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart23.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_16')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_16')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_16')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_17">
+                            <h4>fileoutpart24.png - TABLE_OR_CHART</h4>
+                            <p><strong>Confidence:</strong> 85.0%</p>
+                            <p><strong>Size:</strong> 351,503 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table, Later document content - appendices/notes</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart24.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart24.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_17')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_17')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_17')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_18">
+                            <h4>fileoutpart25.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 763,868 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table, Later document content - appendices/notes</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart25.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart25.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_18')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_18')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_18')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_19">
+                            <h4>fileoutpart26.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 520,439 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table, Later document content - appendices/notes</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart26.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart26.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_19')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_19')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_19')">⚠️ Needs OCR</button>
+                        </div>
+                
+                        <div class="validation-item" id="image_20">
+                            <h4>fileoutpart27.png - MAJOR_TABLE</h4>
+                            <p><strong>Confidence:</strong> 95.0%</p>
+                            <p><strong>Size:</strong> 604,033 bytes (2275x3053)</p>
+                            <p><strong>Predicted Content:</strong> Detailed financial table, Later document content - appendices/notes</p>
+                            <img src="output_advanced/messos 30.5/figures\fileoutpart27.png" class="image-preview" onclick="showImage('output_advanced/messos 30.5/figures\fileoutpart27.png')" style="max-width: 400px; cursor: pointer;" title="Click to view full size">
+                            <div class="correction-note"></div>
+                            <button class="btn btn-success" onclick="markCorrect('image_20')">✅ Contains Table Data</button>
+                            <button class="btn btn-danger" onclick="markIncorrect('image_20')">❌ No Table Data</button>
+                            <button class="btn btn-warning" onclick="needsReview('image_20')">⚠️ Needs OCR</button>
+                        </div>
+                
+                <div class="section" id="table-data">
+                    <h2>📊 Reconstructed Table Data</h2>
+                    <p>Review spatial analysis results for table reconstruction:</p>
+        
+                    <div class="validation-item needs-review">
+                        <h4>No Tables Reconstructed from Text</h4>
+                        <p>The spatial analysis did not find clear table structures in the text elements. This suggests the main financial data is in the image files.</p>
+                        <p><strong>Recommendation:</strong> Focus on the high-confidence images above for manual data entry or OCR processing.</p>
+                    </div>
+            
+                </div>
+                
+                <div class="section">
+                    <h2>✅ Validation Complete</h2>
+                    <p>Once you've reviewed all items above:</p>
+                    <ol>
+                        <li>Click "Export Corrections" to save your validation results</li>
+                        <li>Use the exported JSON file to update the extraction system</li>
+                        <li>Re-run extraction with human corrections applied</li>
+                    </ol>
+                    <button class="btn btn-primary" onclick="exportCorrections()" style="font-size: 18px; padding: 15px 30px;">📥 Export All Corrections</button>
+                </div>
+            </div>
+        </body>
+        </html>
+        

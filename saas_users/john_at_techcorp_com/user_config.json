@@ -1,0 +1,10 @@
+{
+  "user_email": "john@techcorp.com",
+  "company": "TechCorp Inc",
+  "plan": "professional",
+  "signup_date": "2025-08-24T09:33:58.081756",
+  "credentials_path": "saas_users/john_at_techcorp_com/adobe_credentials.json",
+  "api_endpoint": "https://pdf-services.adobe.io",
+  "monthly_quota": 1000,
+  "estimated_pdfs": 500
+}

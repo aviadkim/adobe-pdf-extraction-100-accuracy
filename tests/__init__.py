@@ -1,0 +1,1 @@
+# Test package for Adobe PDF Extraction System

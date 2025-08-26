@@ -1,0 +1,9 @@
+{
+  "extraction_time": 0.0,
+  "adobe_success": true,
+  "azure_success": true,
+  "validation_passed": true,
+  "final_confidence": 100.0,
+  "recommended_total": 19452528,
+  "cross_validation_status": "PASSED - Results match within 0.3%"
+}

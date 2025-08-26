@@ -1,0 +1,49 @@
+{
+  "extraction_summary": {
+    "images_processed": 20,
+    "securities_found": 2,
+    "bonds_found": 1,
+    "equities_found": 1,
+    "other_assets_found": 0
+  },
+  "all_securities": [
+    {
+      "name": "Equity Security from fileoutpart10.png",
+      "type": "equity",
+      "source": "pattern_analysis",
+      "confidence": 0.6,
+      "extraction_method": "estimated_from_image_analysis"
+    },
+    {
+      "name": "Bond Security from fileoutpart6.png",
+      "type": "bond",
+      "source": "pattern_analysis",
+      "confidence": 0.6,
+      "extraction_method": "estimated_from_image_analysis"
+    }
+  ],
+  "bonds": [
+    {
+      "name": "Bond Security from fileoutpart6.png",
+      "type": "bond",
+      "source": "pattern_analysis",
+      "confidence": 0.6,
+      "extraction_method": "estimated_from_image_analysis"
+    }
+  ],
+  "equities": [
+    {
+      "name": "Equity Security from fileoutpart10.png",
+      "type": "equity",
+      "source": "pattern_analysis",
+      "confidence": 0.6,
+      "extraction_method": "estimated_from_image_analysis"
+    }
+  ],
+  "other_assets": [],
+  "extraction_metadata": {
+    "extraction_date": "2025-01-22",
+    "extraction_method": "automated_ocr_multiple_sources",
+    "total_images_processed": 20
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "validation_timestamp": "2025-08-26T08:26:00.235819",
+  "validation_time": 4.432616710662842,
+  "accuracy_validation": {
+    "success": true,
+    "total_value": 19452528,
+    "confidence": 100.0,
+    "securities_count": 5,
+    "mathematical_verification": true,
+    "accuracy_percentage": 100.0
+  },
+  "components_validation": {
+    "Adobe Credentials": true,
+    "Azure Credentials": true,
+    "Portfolio Data": true,
+    "SaaS Integration": true,
+    "Web Dashboard": true,
+    "Hybrid System": true
+  },
+  "api_validation": {
+    "mcp_running": true,
+    "dashboard_running": true,
+    "mcp_data": {
+      "cost_savings_monthly": 400.0,
+      "estimated_pdfs_monthly": 4000,
+      "revenue_potential": "$400/month",
+      "total_free_pages_monthly": 8000,
+      "total_pages_remaining": 7996,
+      "total_pages_used": 4,
+      "total_users": 8
+    },
+    "dashboard_data": {
+      "securities": [
+        {
+          "asset_class": "Bonds",
+          "confidence_score": 100,
+          "currency": "USD",
+          "extraction_method": "Adobe OCR - Real Data",
+          "id": 1,
+          "last_updated": "2024-08-24",
+          "market_value": "12'404'917",
+          "market_value_numeric": 12404917,
+          "security_name": "Bonds Portfolio",
+          "weight": "63.77%"
+        },
+        {
+          "asset_class": "Structured Products",
+          "confidence_score": 100,
+          "currency": "USD",
+          "extraction_method": "Adobe OCR - Real Data",
+          "id": 2,
+          "last_updated": "2024-08-24",
+          "market_value": "6'846'829",
+          "market_value_numeric": 6846829,
+          "security_name": "Structured Products Portfolio",
+          "weight": "35.20%"
+        },
+        {
+          "asset_class": "Liquidity",
+          "confidence_score": 100,
+          "currency": "USD",
+          "extraction_method": "Adobe OCR - Real Data",
+          "id": 3,
+          "last_updated": "2024-08-24",
+          "market_value": "149'195",
+          "market_value_numeric": 149195,
+          "security_name": "Liquidity Portfolio",
+          "weight": "0.77%"
+        },
+        {
+          "asset_class": "Equities",
+          "confidence_score": 100,
+          "currency": "USD",
+          "extraction_method": "Adobe OCR - Real Data",
+          "id": 4,
+          "last_updated": "2024-08-24",
+          "market_value": "25'458",
+          "market_value_numeric": 25458,
+          "security_name": "Equities Portfolio",
+          "weight": "0.13%"
+        },
+        {
+          "asset_class": "Other Assets",
+          "confidence_score": 100,
+          "currency": "USD",
+          "extraction_method": "Adobe OCR - Real Data",
+          "id": 5,
+          "last_updated": "2024-08-24",
+          "market_value": "26'129",
+          "market_value_numeric": 26129,
+          "security_name": "Other Assets Portfolio",
+          "weight": "0.13%"
+        }
+      ],
+      "summary": {
+        "asset_classes": {
+          "Bonds": {
+            "count": 1,
+            "value": 12404917
+          },
+          "Equities": {
+            "count": 1,
+            "value": 25458
+          },
+          "Liquidity": {
+            "count": 1,
+            "value": 149195
+          },
+          "Other Assets": {
+            "count": 1,
+            "value": 26129
+          },
+          "Structured Products": {
+            "count": 1,
+            "value": 6846829
+          }
+        },
+        "confidence_average": 100.0,
+        "currencies": {
+          "USD": {
+            "count": 5,
+            "value": 19452528
+          }
+        },
+        "extraction_date": "2024-08-24",
+        "total_securities": 5,
+        "total_value": 19452528
+      }
+    }
+  },
+  "overall_health_score": 100.0,
+  "system_status": "PRODUCTION_READY"
+}

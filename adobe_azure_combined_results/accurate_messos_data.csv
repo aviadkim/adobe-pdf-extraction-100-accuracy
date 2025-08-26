@@ -1,0 +1,6 @@
+name,isin,valorn,quantity,market_value,unit_price,performance_ytd,performance_total,currency,maturity_date,asset_class,confidence_score,extraction_method,source_page,validation_flags,adobe_data_available,azure_data_available
+"NATIXIS STRUC.NOTES 19-20.6.26 VRN ON 4,75%METLIFE",XS1700087403,39877135,100'000,99'555,,"NATIXIS STRUC.NOTES 19-20.6.26 VRN ON 4,75%METLIFE",,USD,,,1.0,adobe_azure_combined,-1,[],True,False
+NOVUS CAPITAL CREDIT LINKED NOTES 2023-27.09.2029,XS2594173093,125443809,200'000,191'753,09.2029,,,USD,27.09.2029,,1.0,adobe_azure_combined,-1,[],True,False
+NOVUS CAPITAL STRUCT.NOTE 2021-12.01.28 VRN ON NATWEST GROUP,XS2407295554,114718568,500'000,505'053,09.2029,"BCO SAFRA CAYMAN 5% STRUCT.NOTE 2022-21.06.27 3,4%",,USD,27.09.2029,,1.0,adobe_azure_combined,-1,[],True,False
+NOVUS CAPITAL STRUCTURED NOTES 20-15.05.26 ON CS,XS2252299883,58001077,1'000'000,992'100,09.2029,,,USD,27.09.2029,,1.0,adobe_azure_combined,-1,[],True,False
+EXIGENT ENHANCED INCOME FUND LTD SHS A SERIES 20,XD0466760473,46676047,204.071,26'129,,,,USD,,,1.0,adobe_azure_combined,-1,[],True,False

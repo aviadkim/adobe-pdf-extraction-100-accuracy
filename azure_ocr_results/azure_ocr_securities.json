@@ -1,0 +1,106 @@
+{
+  "extraction_summary": {
+    "total_securities": 5,
+    "bonds": 1,
+    "equities": 0,
+    "other_assets": 4,
+    "extraction_method": "azure_computer_vision_ocr"
+  },
+  "all_securities": [
+    {
+      "name": "Equities from fileoutpart10.png",
+      "type": "equities",
+      "source_image": "fileoutpart10.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 2562,
+      "priority": 10
+    },
+    {
+      "name": "Bonds from fileoutpart6.png",
+      "type": "bonds",
+      "source_image": "fileoutpart6.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 589,
+      "priority": 10
+    },
+    {
+      "name": "Other_Assets from fileoutpart11.png",
+      "type": "other assets",
+      "source_image": "fileoutpart11.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 382151,
+      "priority": 8
+    },
+    {
+      "name": "Other_Assets from fileoutpart12.png",
+      "type": "other assets",
+      "source_image": "fileoutpart12.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 403727,
+      "priority": 8
+    },
+    {
+      "name": "Other_Assets from fileoutpart13.png",
+      "type": "other assets",
+      "source_image": "fileoutpart13.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 379612,
+      "priority": 8
+    }
+  ],
+  "bonds": [
+    {
+      "name": "Bonds from fileoutpart6.png",
+      "type": "bonds",
+      "source_image": "fileoutpart6.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 589,
+      "priority": 10
+    }
+  ],
+  "equities": [],
+  "other_assets": [
+    {
+      "name": "Equities from fileoutpart10.png",
+      "type": "equities",
+      "source_image": "fileoutpart10.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 2562,
+      "priority": 10
+    },
+    {
+      "name": "Other_Assets from fileoutpart11.png",
+      "type": "other assets",
+      "source_image": "fileoutpart11.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 382151,
+      "priority": 8
+    },
+    {
+      "name": "Other_Assets from fileoutpart12.png",
+      "type": "other assets",
+      "source_image": "fileoutpart12.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 403727,
+      "priority": 8
+    },
+    {
+      "name": "Other_Assets from fileoutpart13.png",
+      "type": "other assets",
+      "source_image": "fileoutpart13.png",
+      "extraction_method": "fallback_pattern_analysis",
+      "confidence": 0.5,
+      "file_size": 379612,
+      "priority": 8
+    }
+  ]
+}

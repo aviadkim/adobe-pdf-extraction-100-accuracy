@@ -1,0 +1,6 @@
+id,security_name,asset_class,market_value,market_value_numeric,currency,weight,confidence_score,extraction_method,last_updated
+1,Bonds Portfolio,Bonds,12'404'917,12404917,USD,63.77%,100,Adobe OCR - Real Data,2024-08-24
+2,Structured Products Portfolio,Structured Products,6'846'829,6846829,USD,35.20%,100,Adobe OCR - Real Data,2024-08-24
+3,Liquidity Portfolio,Liquidity,149'195,149195,USD,0.77%,100,Adobe OCR - Real Data,2024-08-24
+4,Equities Portfolio,Equities,25'458,25458,USD,0.13%,100,Adobe OCR - Real Data,2024-08-24
+5,Other Assets Portfolio,Other Assets,26'129,26129,USD,0.13%,100,Adobe OCR - Real Data,2024-08-24

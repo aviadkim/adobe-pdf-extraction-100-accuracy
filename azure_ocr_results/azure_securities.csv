@@ -1,0 +1,6 @@
+name,type,source_image,extraction_method,confidence,file_size,priority
+Equities from fileoutpart10.png,equities,fileoutpart10.png,fallback_pattern_analysis,0.5,2562,10
+Bonds from fileoutpart6.png,bonds,fileoutpart6.png,fallback_pattern_analysis,0.5,589,10
+Other_Assets from fileoutpart11.png,other assets,fileoutpart11.png,fallback_pattern_analysis,0.5,382151,8
+Other_Assets from fileoutpart12.png,other assets,fileoutpart12.png,fallback_pattern_analysis,0.5,403727,8
+Other_Assets from fileoutpart13.png,other assets,fileoutpart13.png,fallback_pattern_analysis,0.5,379612,8

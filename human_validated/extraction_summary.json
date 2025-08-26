@@ -1,0 +1,24 @@
+{
+  "extraction_date": "2025-01-22",
+  "source_document": "messos 30.5.pdf",
+  "extraction_confidence": "86.2%",
+  "client_information": {
+    "client_number": "366223",
+    "valuation_currency": "USD",
+    "company_name": "MESSOS ENTERPRISES LTD.",
+    "valuation_date": "30.05.2025"
+  },
+  "data_quality": {
+    "text_elements_found": 12,
+    "high_confidence_images": 18,
+    "tables_reconstructed": 0,
+    "manual_review_needed": true
+  },
+  "next_steps": [
+    "Review client information accuracy",
+    "Validate financial data elements",
+    "Process high-confidence images with OCR or manual entry",
+    "Cross-reference extracted data with original PDF",
+    "Export corrected data for final use"
+  ]
+}

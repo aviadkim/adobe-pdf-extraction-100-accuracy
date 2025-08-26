@@ -1,0 +1,23 @@
+{
+  "document_info": {
+    "format": "swiss_format",
+    "language": "english",
+    "total_elements": 1082,
+    "tables_detected": 7
+  },
+  "securities": [],
+  "validation_report": {
+    "total_securities": 0,
+    "valid_securities": 0,
+    "high_confidence_securities": 0,
+    "validation_issues": [],
+    "confidence_distribution": {},
+    "field_completeness": {},
+    "overall_confidence": 0.0
+  },
+  "extraction_metadata": {
+    "parser_version": "1.0",
+    "confidence_threshold": 0.3,
+    "processing_timestamp": "2025-08-23T23:25:24.888178"
+  }
+}

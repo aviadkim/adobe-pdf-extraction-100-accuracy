@@ -1,0 +1,16 @@
+{
+  "all_securities": [],
+  "csv_tables": [],
+  "table_data": [],
+  "bonds": [],
+  "equities": [],
+  "other_assets": [],
+  "extraction_summary": {
+    "total_securities_found": 0,
+    "bonds_found": 0,
+    "equities_found": 0,
+    "other_assets_found": 0,
+    "csv_tables_processed": 0,
+    "extraction_method": "adobe_enhanced_table_extraction"
+  }
+}

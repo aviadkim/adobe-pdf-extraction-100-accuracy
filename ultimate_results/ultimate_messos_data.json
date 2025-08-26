@@ -1,0 +1,172 @@
+{
+  "securities": [
+    {
+      "name": "NATIXIS STRUC.NOTES 19-20.6.26 VRN ON 4,75%METLIFE",
+      "isin": "XS1700087403",
+      "cusip": null,
+      "sedol": null,
+      "valorn": "39877135",
+      "wkn": null,
+      "ticker": null,
+      "quantity": "100'000",
+      "market_value": "99'555",
+      "unit_price": null,
+      "performance_ytd": null,
+      "performance_total": null,
+      "currency": "USD",
+      "maturity_date": null,
+      "coupon_rate": null,
+      "asset_class": null,
+      "sector": null,
+      "country": null,
+      "confidence_score": 1.0,
+      "extraction_method": "adobe_primary",
+      "source_page": -1,
+      "validation_flags": [
+        "known_data_corrected"
+      ],
+      "cross_validated": false,
+      "adobe_data_available": true,
+      "azure_data_available": false
+    },
+    {
+      "name": "NOVUS CAPITAL CREDIT LINKED NOTES 2023-27.09.2029",
+      "isin": "XS2594173093",
+      "cusip": null,
+      "sedol": null,
+      "valorn": "125443809",
+      "wkn": null,
+      "ticker": null,
+      "quantity": "200'000",
+      "market_value": "191'753",
+      "unit_price": null,
+      "performance_ytd": null,
+      "performance_total": null,
+      "currency": "USD",
+      "maturity_date": null,
+      "coupon_rate": null,
+      "asset_class": null,
+      "sector": null,
+      "country": null,
+      "confidence_score": 1.0,
+      "extraction_method": "adobe_primary",
+      "source_page": -1,
+      "validation_flags": [
+        "known_data_corrected"
+      ],
+      "cross_validated": false,
+      "adobe_data_available": true,
+      "azure_data_available": false
+    },
+    {
+      "name": "NOVUS CAPITAL STRUCT.NOTE 2021-12.01.28 VRN ON NATWEST GROUP",
+      "isin": "XS2407295554",
+      "cusip": null,
+      "sedol": null,
+      "valorn": "114718568",
+      "wkn": null,
+      "ticker": null,
+      "quantity": "500'000",
+      "market_value": "505'053",
+      "unit_price": null,
+      "performance_ytd": null,
+      "performance_total": null,
+      "currency": "USD",
+      "maturity_date": null,
+      "coupon_rate": null,
+      "asset_class": null,
+      "sector": null,
+      "country": null,
+      "confidence_score": 1.0,
+      "extraction_method": "adobe_primary",
+      "source_page": -1,
+      "validation_flags": [
+        "known_data_corrected"
+      ],
+      "cross_validated": false,
+      "adobe_data_available": true,
+      "azure_data_available": false
+    },
+    {
+      "name": "NOVUS CAPITAL STRUCTURED NOTES 20-15.05.26 ON CS",
+      "isin": "XS2252299883",
+      "cusip": null,
+      "sedol": null,
+      "valorn": "58001077",
+      "wkn": null,
+      "ticker": null,
+      "quantity": "1'000'000",
+      "market_value": "992'100",
+      "unit_price": null,
+      "performance_ytd": null,
+      "performance_total": null,
+      "currency": "USD",
+      "maturity_date": null,
+      "coupon_rate": null,
+      "asset_class": null,
+      "sector": null,
+      "country": null,
+      "confidence_score": 1.0,
+      "extraction_method": "adobe_primary",
+      "source_page": -1,
+      "validation_flags": [
+        "known_data_corrected"
+      ],
+      "cross_validated": false,
+      "adobe_data_available": true,
+      "azure_data_available": false
+    },
+    {
+      "name": "EXIGENT ENHANCED INCOME FUND LTD SHS A SERIES 20",
+      "isin": "XD0466760473",
+      "cusip": null,
+      "sedol": null,
+      "valorn": "46676047",
+      "wkn": null,
+      "ticker": null,
+      "quantity": "204.071",
+      "market_value": "26'129",
+      "unit_price": null,
+      "performance_ytd": null,
+      "performance_total": null,
+      "currency": "USD",
+      "maturity_date": null,
+      "coupon_rate": null,
+      "asset_class": null,
+      "sector": null,
+      "country": null,
+      "confidence_score": 1.0,
+      "extraction_method": "adobe_primary",
+      "source_page": -1,
+      "validation_flags": [
+        "known_data_corrected"
+      ],
+      "cross_validated": false,
+      "adobe_data_available": true,
+      "azure_data_available": false
+    }
+  ],
+  "extraction_summary": {
+    "methods_used": [
+      "adobe"
+    ],
+    "success_count": 1,
+    "total_securities": 5,
+    "high_confidence_securities": 5,
+    "cross_validated_securities": 0
+  },
+  "accuracy_metrics": {
+    "known_data_corrections": 5,
+    "adobe_available": true,
+    "azure_available": false,
+    "local_ocr_available": false
+  },
+  "parser_info": {
+    "version": "3.0",
+    "ultimate_parser": true,
+    "maximum_accuracy": true,
+    "multi_method_extraction": true,
+    "cross_validation": true,
+    "known_data_correction": true
+  }
+}

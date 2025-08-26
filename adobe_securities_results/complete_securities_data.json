@@ -1,0 +1,34 @@
+{
+  "securities_found": [
+    {
+      "text": "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I ",
+      "page": 0,
+      "confidence": 0,
+      "type": "text_based",
+      "bounds": [
+        -0.3074951171875,
+        40.37249755859375,
+        781.4400024414062,
+        586.4400024414062
+      ]
+    },
+    {
+      "text": "Bonds 6 ",
+      "page": 1,
+      "confidence": 0,
+      "type": "text_based",
+      "bounds": [
+        78.70950317382812,
+        366.4931945800781,
+        427.679443359375,
+        377.6907043457031
+      ]
+    }
+  ],
+  "csv_tables": [],
+  "extraction_summary": {
+    "total_securities": 2,
+    "csv_tables_found": 0,
+    "extraction_method": "adobe_enhanced_ocr"
+  }
+}

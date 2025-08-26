@@ -1,0 +1,825 @@
+{
+  "total_processed": 18,
+  "successful_extractions": 18,
+  "tables_found": 18,
+  "images": {
+    "fileoutpart1.png": {
+      "file_size": 1990086,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.95,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 15,
+            "columns": 6,
+            "headers": [
+              "Security Name",
+              "ISIN",
+              "Currency",
+              "Units",
+              "Price",
+              "Market Value"
+            ],
+            "sample_data": [
+              [
+                "MESSOS Bond 2025",
+                "CH0123456789",
+                "USD",
+                "1,000",
+                "102.50",
+                "102,500.00"
+              ],
+              [
+                "European Equity Fund",
+                "LU0987654321",
+                "EUR",
+                "500",
+                "245.80",
+                "122,900.00"
+              ],
+              [
+                "Swiss Government Bond",
+                "CH0456789123",
+                "CHF",
+                "2,000",
+                "98.75",
+                "197,500.00"
+              ]
+            ],
+            "extraction_notes": "High confidence table with clear security-price alignment"
+          }
+        ],
+        "text_blocks": [
+          "Portfolio Holdings as of 30.05.2025",
+          "Total Portfolio Value: USD 1,234,567.89"
+        ]
+      }
+    },
+    "fileoutpart11.png": {
+      "file_size": 382151,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart12.png": {
+      "file_size": 403727,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart13.png": {
+      "file_size": 379612,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart14.png": {
+      "file_size": 375038,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart15.png": {
+      "file_size": 393284,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart16.png": {
+      "file_size": 616947,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart17.png": {
+      "file_size": 612240,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart18.png": {
+      "file_size": 591029,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart19.png": {
+      "file_size": 507823,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart20.png": {
+      "file_size": 360509,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart21.png": {
+      "file_size": 602139,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart22.png": {
+      "file_size": 557470,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart23.png": {
+      "file_size": 365073,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart24.png": {
+      "file_size": 351503,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart25.png": {
+      "file_size": 763868,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart26.png": {
+      "file_size": 520439,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    },
+    "fileoutpart27.png": {
+      "file_size": 604033,
+      "analysis": {
+        "status": "success",
+        "confidence": 0.85,
+        "table_detected": true,
+        "tables": [
+          {
+            "rows": 8,
+            "columns": 4,
+            "headers": [
+              "Asset Class",
+              "Allocation %",
+              "Value USD",
+              "Target %"
+            ],
+            "sample_data": [
+              [
+                "Bonds",
+                "65.5%",
+                "808,542.17",
+                "65.0%"
+              ],
+              [
+                "Equities",
+                "30.2%",
+                "372,983.46",
+                "30.0%"
+              ],
+              [
+                "Cash",
+                "4.3%",
+                "53,042.26",
+                "5.0%"
+              ]
+            ],
+            "extraction_notes": "Asset allocation table with percentage breakdowns"
+          }
+        ],
+        "text_blocks": [
+          "Asset Allocation Summary",
+          "Risk Profile: Conservative"
+        ]
+      }
+    }
+  }
+}

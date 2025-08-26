@@ -1,0 +1,679 @@
+{
+  "extraction_summary": {
+    "total_text_elements": 29,
+    "financial_elements": 12,
+    "reconstructed_tables": 0,
+    "image_files": 28,
+    "high_confidence_images": 18
+  },
+  "client_information": {
+    "client_number": "366223",
+    "valuation_currency": "USD",
+    "company_name": "MESSOS ENTERPRISES LTD.",
+    "valuation_date": "30.05.2025"
+  },
+  "financial_data": {
+    "client_info": [
+      {
+        "text": "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I",
+        "page": 0,
+        "bounds": [
+          -0.3074951171875,
+          40.37249755859375,
+          781.4400024414062,
+          586.4400024414062
+        ],
+        "path": "//Document/Figure[2]",
+        "font": {
+          "alt_family_name": "* Times New Roman",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Times New Roman",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Times New Roman-Bold-1440",
+          "subset": false,
+          "weight": 700
+        },
+        "x": -0.3074951171875,
+        "y": 40.37249755859375,
+        "width": 781.4400024414062,
+        "height": 586.4400024414062
+      },
+      {
+        "text": "MESSOS ENTERPRISES LTD.",
+        "page": 0,
+        "bounds": [
+          154.55999755859375,
+          376.6510009765625,
+          341.6559753417969,
+          386.51800537109375
+        ],
+        "path": "//Document/P",
+        "font": {
+          "alt_family_name": "* Arial",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Arial",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Arial-Bold-1445",
+          "subset": false,
+          "weight": 700
+        },
+        "x": 154.55999755859375,
+        "y": 376.6510009765625,
+        "width": 341.6559753417969,
+        "height": 386.51800537109375
+      },
+      {
+        "text": "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223",
+        "page": 1,
+        "bounds": [
+          609.1199951171875,
+          532.4579925537109,
+          729.0890350341797,
+          555.760498046875
+        ],
+        "path": "//Document/P[3]",
+        "font": {
+          "alt_family_name": "* Arial",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Arial",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Arial-Bold-4078",
+          "subset": false,
+          "weight": 700
+        },
+        "x": 609.1199951171875,
+        "y": 532.4579925537109,
+        "width": 729.0890350341797,
+        "height": 555.760498046875
+      }
+    ],
+    "securities": [
+      {
+        "text": "Bonds 6",
+        "page": 1,
+        "bounds": [
+          78.70950317382812,
+          366.4931945800781,
+          427.679443359375,
+          377.6907043457031
+        ],
+        "path": "//Document/TOC[4]/TOCI/Span[2]",
+        "font": {
+          "alt_family_name": "* Arial",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Arial",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Arial-4079",
+          "subset": false,
+          "weight": 400
+        },
+        "x": 78.70950317382812,
+        "y": 366.4931945800781,
+        "width": 427.679443359375,
+        "height": 377.6907043457031
+      }
+    ],
+    "prices": [
+      {
+        "text": "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I",
+        "page": 0,
+        "bounds": [
+          -0.3074951171875,
+          40.37249755859375,
+          781.4400024414062,
+          586.4400024414062
+        ],
+        "path": "//Document/Figure[2]",
+        "font": {
+          "alt_family_name": "* Times New Roman",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Times New Roman",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Times New Roman-Bold-1440",
+          "subset": false,
+          "weight": 700
+        },
+        "x": -0.3074951171875,
+        "y": 40.37249755859375,
+        "width": 781.4400024414062,
+        "height": 586.4400024414062
+      }
+    ],
+    "valuations": [
+      {
+        "text": "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I",
+        "page": 0,
+        "bounds": [
+          -0.3074951171875,
+          40.37249755859375,
+          781.4400024414062,
+          586.4400024414062
+        ],
+        "path": "//Document/Figure[2]",
+        "font": {
+          "alt_family_name": "* Times New Roman",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Times New Roman",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Times New Roman-Bold-1440",
+          "subset": false,
+          "weight": 700
+        },
+        "x": -0.3074951171875,
+        "y": 40.37249755859375,
+        "width": 781.4400024414062,
+        "height": 586.4400024414062
+      },
+      {
+        "text": "Valuation as of 30.05.2025",
+        "page": 0,
+        "bounds": [
+          154.31700134277344,
+          408.6697998046875,
+          350.3807678222656,
+          460.6087951660156
+        ],
+        "path": "//Document/H1",
+        "font": {
+          "alt_family_name": "* Times New Roman",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Times New Roman",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Times New Roman-Bold-1438",
+          "subset": false,
+          "weight": 700
+        },
+        "x": 154.31700134277344,
+        "y": 408.6697998046875,
+        "width": 350.3807678222656,
+        "height": 460.6087951660156
+      },
+      {
+        "text": "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223",
+        "page": 1,
+        "bounds": [
+          609.1199951171875,
+          532.4579925537109,
+          729.0890350341797,
+          555.760498046875
+        ],
+        "path": "//Document/P[3]",
+        "font": {
+          "alt_family_name": "* Arial",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Arial",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Arial-Bold-4078",
+          "subset": false,
+          "weight": 700
+        },
+        "x": 609.1199951171875,
+        "y": 532.4579925537109,
+        "width": 729.0890350341797,
+        "height": 555.760498046875
+      }
+    ],
+    "allocations": [],
+    "dates": [
+      {
+        "text": "Valuation as of 30.05.2025",
+        "page": 0,
+        "bounds": [
+          154.31700134277344,
+          408.6697998046875,
+          350.3807678222656,
+          460.6087951660156
+        ],
+        "path": "//Document/H1",
+        "font": {
+          "alt_family_name": "* Times New Roman",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Times New Roman",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Times New Roman-Bold-1438",
+          "subset": false,
+          "weight": 700
+        },
+        "x": 154.31700134277344,
+        "y": 408.6697998046875,
+        "width": 350.3807678222656,
+        "height": 460.6087951660156
+      },
+      {
+        "text": "Print date 31.05.2025 // Page I",
+        "page": 1,
+        "bounds": [
+          623.0399932861328,
+          50.619293212890625,
+          729.0192565917969,
+          57.84930419921875
+        ],
+        "path": "//Document/P[6]",
+        "font": {
+          "alt_family_name": "* Arial",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Arial",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Arial-Bold-4073",
+          "subset": false,
+          "weight": 700
+        },
+        "x": 623.0399932861328,
+        "y": 50.619293212890625,
+        "width": 729.0192565917969,
+        "height": 57.84930419921875
+      },
+      {
+        "text": "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223",
+        "page": 1,
+        "bounds": [
+          609.1199951171875,
+          532.4579925537109,
+          729.0890350341797,
+          555.760498046875
+        ],
+        "path": "//Document/P[3]",
+        "font": {
+          "alt_family_name": "* Arial",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Arial",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Arial-Bold-4078",
+          "subset": false,
+          "weight": 700
+        },
+        "x": 609.1199951171875,
+        "y": 532.4579925537109,
+        "width": 729.0890350341797,
+        "height": 555.760498046875
+      }
+    ],
+    "currencies": [
+      {
+        "text": "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I",
+        "page": 0,
+        "bounds": [
+          -0.3074951171875,
+          40.37249755859375,
+          781.4400024414062,
+          586.4400024414062
+        ],
+        "path": "//Document/Figure[2]",
+        "font": {
+          "alt_family_name": "* Times New Roman",
+          "embedded": true,
+          "encoding": "Identity-H",
+          "family_name": "* Times New Roman",
+          "font_type": "CIDFontType0",
+          "italic": false,
+          "monospaced": false,
+          "name": "*Times New Roman-Bold-1440",
+          "subset": false,
+          "weight": 700
+        },
+        "x": -0.3074951171875,
+        "y": 40.37249755859375,
+        "width": 781.4400024414062,
+        "height": 586.4400024414062
+      }
+    ],
+    "identifiers": []
+  },
+  "reconstructed_tables": [],
+  "image_analysis": [
+    {
+      "filename": "fileoutpart0.png",
+      "file_size": 5470,
+      "dimensions": "488x94",
+      "aspect_ratio": 5.19,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Supporting information",
+        "Early document content - headers/summary"
+      ]
+    },
+    {
+      "filename": "fileoutpart1.png",
+      "file_size": 1990086,
+      "dimensions": "2444x1554",
+      "aspect_ratio": 1.57,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Main securities holdings table",
+        "Likely main table of contents or holdings"
+      ]
+    },
+    {
+      "filename": "fileoutpart10.png",
+      "file_size": 2562,
+      "dimensions": "120x111",
+      "aspect_ratio": 1.08,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Chart or graphic"
+      ]
+    },
+    {
+      "filename": "fileoutpart11.png",
+      "file_size": 382151,
+      "dimensions": "2275x3054",
+      "aspect_ratio": 0.74,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart12.png",
+      "file_size": 403727,
+      "dimensions": "2275x3054",
+      "aspect_ratio": 0.74,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart13.png",
+      "file_size": 379612,
+      "dimensions": "2275x3054",
+      "aspect_ratio": 0.74,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart14.png",
+      "file_size": 375038,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart15.png",
+      "file_size": 393284,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart16.png",
+      "file_size": 616947,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart17.png",
+      "file_size": 612240,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart18.png",
+      "file_size": 591029,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart19.png",
+      "file_size": 507823,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart2.png",
+      "file_size": 2540,
+      "dimensions": "114x106",
+      "aspect_ratio": 1.08,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Chart or graphic",
+        "Early document content - headers/summary"
+      ]
+    },
+    {
+      "filename": "fileoutpart20.png",
+      "file_size": 360509,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table"
+      ]
+    },
+    {
+      "filename": "fileoutpart21.png",
+      "file_size": 602139,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table",
+        "Later document content - appendices/notes"
+      ]
+    },
+    {
+      "filename": "fileoutpart22.png",
+      "file_size": 557470,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table",
+        "Later document content - appendices/notes"
+      ]
+    },
+    {
+      "filename": "fileoutpart23.png",
+      "file_size": 365073,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table",
+        "Later document content - appendices/notes"
+      ]
+    },
+    {
+      "filename": "fileoutpart24.png",
+      "file_size": 351503,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "TABLE_OR_CHART",
+      "confidence": 0.85,
+      "likely_content": [
+        "Detailed financial table",
+        "Later document content - appendices/notes"
+      ]
+    },
+    {
+      "filename": "fileoutpart25.png",
+      "file_size": 763868,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table",
+        "Later document content - appendices/notes"
+      ]
+    },
+    {
+      "filename": "fileoutpart26.png",
+      "file_size": 520439,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table",
+        "Later document content - appendices/notes"
+      ]
+    },
+    {
+      "filename": "fileoutpart27.png",
+      "file_size": 604033,
+      "dimensions": "2275x3053",
+      "aspect_ratio": 0.75,
+      "category": "MAJOR_TABLE",
+      "confidence": 0.95,
+      "likely_content": [
+        "Detailed financial table",
+        "Later document content - appendices/notes"
+      ]
+    },
+    {
+      "filename": "fileoutpart3.png",
+      "file_size": 528,
+      "dimensions": "28x36",
+      "aspect_ratio": 0.78,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Chart or graphic",
+        "Early document content - headers/summary"
+      ]
+    },
+    {
+      "filename": "fileoutpart4.png",
+      "file_size": 638,
+      "dimensions": "31x45",
+      "aspect_ratio": 0.69,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Chart or graphic",
+        "Early document content - headers/summary"
+      ]
+    },
+    {
+      "filename": "fileoutpart5.png",
+      "file_size": 636,
+      "dimensions": "62x45",
+      "aspect_ratio": 1.38,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Chart or graphic"
+      ]
+    },
+    {
+      "filename": "fileoutpart6.png",
+      "file_size": 589,
+      "dimensions": "96x38",
+      "aspect_ratio": 2.53,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Tabular data"
+      ]
+    },
+    {
+      "filename": "fileoutpart7.png",
+      "file_size": 617,
+      "dimensions": "65x43",
+      "aspect_ratio": 1.51,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Supporting information"
+      ]
+    },
+    {
+      "filename": "fileoutpart8.png",
+      "file_size": 632,
+      "dimensions": "32x44",
+      "aspect_ratio": 0.73,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Chart or graphic"
+      ]
+    },
+    {
+      "filename": "fileoutpart9.png",
+      "file_size": 585,
+      "dimensions": "66x39",
+      "aspect_ratio": 1.69,
+      "category": "HEADER_LABEL",
+      "confidence": 0.5,
+      "likely_content": [
+        "Supporting information"
+      ]
+    }
+  ],
+  "extraction_confidence": 0.8625
+}

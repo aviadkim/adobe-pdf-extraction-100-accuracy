@@ -1,0 +1,78 @@
+{
+  "securities": [
+    {
+      "id": 1,
+      "security_name": "Structured Products Portfolio",
+      "asset_class": "Structured Products",
+      "market_value": "6'846'829",
+      "market_value_numeric": 6846829,
+      "currency": "USD",
+      "weight": "35.20%",
+      "confidence_score": 100,
+      "extraction_method": "Adobe OCR - Summary Table",
+      "last_updated": "2024-08-24"
+    },
+    {
+      "id": 2,
+      "security_name": "Bonds Portfolio",
+      "asset_class": "Bonds",
+      "market_value": "12'404'917",
+      "market_value_numeric": 12404917,
+      "currency": "USD",
+      "weight": "63.77%",
+      "confidence_score": 100,
+      "extraction_method": "Adobe OCR - Summary Table",
+      "last_updated": "2024-08-24"
+    },
+    {
+      "id": 3,
+      "security_name": "Other Assets Portfolio",
+      "asset_class": "Other Assets",
+      "market_value": "26'129",
+      "market_value_numeric": 26129,
+      "currency": "USD",
+      "weight": "0.13%",
+      "confidence_score": 100,
+      "extraction_method": "Adobe OCR - Summary Table",
+      "last_updated": "2024-08-24"
+    },
+    {
+      "id": 4,
+      "security_name": "Equities Portfolio",
+      "asset_class": "Equities",
+      "market_value": "25'458",
+      "market_value_numeric": 25458,
+      "currency": "USD",
+      "weight": "0.13%",
+      "confidence_score": 100,
+      "extraction_method": "Adobe OCR - Summary Table",
+      "last_updated": "2024-08-24"
+    },
+    {
+      "id": 5,
+      "security_name": "Liquidity Portfolio",
+      "asset_class": "Liquidity",
+      "market_value": "149'195",
+      "market_value_numeric": 149195,
+      "currency": "USD",
+      "weight": "0.77%",
+      "confidence_score": 100,
+      "extraction_method": "Adobe OCR - Summary Table",
+      "last_updated": "2024-08-24"
+    }
+  ],
+  "summary": {
+    "total_securities": 5,
+    "total_value": 19452528,
+    "total_value_formatted": "19'452'528",
+    "confidence_average": 100.0,
+    "extraction_date": "2024-08-24",
+    "data_source": "Adobe OCR - Real Data"
+  },
+  "verification": {
+    "total_from_components": 19452528,
+    "total_from_document": 19452528,
+    "matches": true,
+    "extraction_method": "Adobe OCR Real Data Extraction"
+  }
+}

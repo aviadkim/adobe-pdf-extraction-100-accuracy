@@ -1,0 +1,6 @@
+source,name,page,position,confidence,type
+text_analysis,"Corner Banca SA // Todistrasse 27 // Postfach 1640 // 8027 Zurich_Switzerland // Hauptsitz Via Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20 // Fax+41442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 IVA",0,"(30, 45)",medium,identified_from_text
+text_analysis,MESSOS ENTERPRISES LTD.,0,"(155, 377)",medium,identified_from_text
+text_analysis,"Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA",1,"(30, 46)",medium,identified_from_text
+text_analysis,Bonds 6,1,"(79, 366)",medium,identified_from_text
+text_analysis,MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223,1,"(609, 532)",medium,identified_from_text

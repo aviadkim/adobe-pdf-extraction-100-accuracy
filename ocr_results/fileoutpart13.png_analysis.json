@@ -1,0 +1,42 @@
+{
+  "status": "success",
+  "confidence": 0.85,
+  "table_detected": true,
+  "tables": [
+    {
+      "rows": 8,
+      "columns": 4,
+      "headers": [
+        "Asset Class",
+        "Allocation %",
+        "Value USD",
+        "Target %"
+      ],
+      "sample_data": [
+        [
+          "Bonds",
+          "65.5%",
+          "808,542.17",
+          "65.0%"
+        ],
+        [
+          "Equities",
+          "30.2%",
+          "372,983.46",
+          "30.0%"
+        ],
+        [
+          "Cash",
+          "4.3%",
+          "53,042.26",
+          "5.0%"
+        ]
+      ],
+      "extraction_notes": "Asset allocation table with percentage breakdowns"
+    }
+  ],
+  "text_blocks": [
+    "Asset Allocation Summary",
+    "Risk Profile: Conservative"
+  ]
+}

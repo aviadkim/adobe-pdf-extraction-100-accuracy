@@ -1,0 +1,3 @@
+name,type,source,confidence,extraction_method
+Equity Security from fileoutpart10.png,equity,pattern_analysis,0.6,estimated_from_image_analysis
+Bond Security from fileoutpart6.png,bond,pattern_analysis,0.6,estimated_from_image_analysis

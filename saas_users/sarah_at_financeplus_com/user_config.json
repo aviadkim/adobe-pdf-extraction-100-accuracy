@@ -1,0 +1,10 @@
+{
+  "user_email": "sarah@financeplus.com",
+  "company": "FinancePlus LLC",
+  "plan": "enterprise",
+  "signup_date": "2025-08-24T09:33:59.098783",
+  "credentials_path": "saas_users/sarah_at_financeplus_com/adobe_credentials.json",
+  "api_endpoint": "https://pdf-services.adobe.io",
+  "monthly_quota": 1000,
+  "estimated_pdfs": 500
+}

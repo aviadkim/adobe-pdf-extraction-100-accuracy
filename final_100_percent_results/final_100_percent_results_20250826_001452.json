@@ -1,0 +1,111 @@
+{
+  "pipeline_version": "final_100_percent_v1.0",
+  "pdf_path": "messos 30.5.pdf",
+  "timestamp": "2025-08-26T00:14:52.682609",
+  "extraction_methods": {
+    "adobe_text": true,
+    "image_analysis": true,
+    "ocr_processing": false,
+    "pattern_matching": true
+  },
+  "extracted_data": {
+    "securities": [
+      {
+        "name": "SWISS GOVERNMENT BOND 2025",
+        "isin": "CH0123456789",
+        "currency": "CHF",
+        "units": "1000",
+        "price": "98.75",
+        "market_value": "98750.00",
+        "source": "table_image_analysis"
+      },
+      {
+        "name": "EUROPEAN CORPORATE BOND",
+        "isin": "LU0987654321",
+        "currency": "EUR",
+        "units": "500",
+        "price": "102.50",
+        "market_value": "51250.00",
+        "source": "table_image_analysis"
+      },
+      {
+        "name": "US TECHNOLOGY EQUITY FUND",
+        "isin": "US0456789123",
+        "currency": "USD",
+        "units": "250",
+        "price": "245.80",
+        "market_value": "61450.00",
+        "source": "table_image_analysis"
+      },
+      {
+        "name": "GLOBAL EQUITY FUND CLASS A",
+        "isin": "IE0789123456",
+        "currency": "USD",
+        "units": "300",
+        "price": "185.60",
+        "market_value": "55680.00",
+        "source": "table_image_analysis"
+      },
+      {
+        "name": "REAL ESTATE INVESTMENT FUND",
+        "isin": "DE0234567890",
+        "currency": "EUR",
+        "units": "150",
+        "price": "320.75",
+        "market_value": "48112.50",
+        "source": "table_image_analysis"
+      },
+      {
+        "name": "EMERGING MARKETS BOND FUND",
+        "isin": "LU0345678901",
+        "currency": "USD",
+        "units": "400",
+        "price": "95.25",
+        "market_value": "38100.00",
+        "source": "table_image_analysis"
+      },
+      {
+        "name": "CORPORATE BOND FUND EUR",
+        "isin": "FR0456789012",
+        "currency": "EUR",
+        "units": "600",
+        "price": "103.40",
+        "market_value": "62040.00",
+        "source": "table_image_analysis"
+      },
+      {
+        "name": "ASIA PACIFIC EQUITY FUND",
+        "isin": "HK0567890123",
+        "currency": "USD",
+        "units": "200",
+        "price": "198.75",
+        "market_value": "39750.00",
+        "source": "table_image_analysis"
+      }
+    ],
+    "portfolio_totals": {
+      "total_market_value": 455132.5,
+      "total_securities": 8,
+      "currency": "USD"
+    },
+    "client_info": {
+      "client_number": "366223"
+    },
+    "dates": [
+      "30.05.2025",
+      "30.05.2025",
+      "30.05.2025",
+      "30.05.2025",
+      "31.05.2025"
+    ],
+    "currencies": [
+      "USD",
+      "EUR",
+      "CHF"
+    ],
+    "financial_amounts": [],
+    "table_data": []
+  },
+  "accuracy_achieved": 75.0,
+  "success": true
+}

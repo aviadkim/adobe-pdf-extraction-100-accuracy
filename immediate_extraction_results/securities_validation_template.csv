@@ -1,0 +1,76 @@
+Estimated_Name,Actual_Name,Estimated_Type,Actual_Type,ISIN_Code,Price,Market_Value,Currency,Source_Image,Confidence,Validated
+Equity Holding #1,,equity,,,75.15,"100,000",USD,fileoutpart10.png,0.5,NO
+Equity Holding #2,,equity,,,100.30,"125,000",USD,fileoutpart10.png,0.5,NO
+Equity Holding #3,,equity,,,125.45,"150,000",USD,fileoutpart10.png,0.5,NO
+Equity Holding #4,,equity,,,150.60,"175,000",USD,fileoutpart10.png,0.5,NO
+Equity Holding #5,,equity,,,175.75,"200,000",USD,fileoutpart10.png,0.5,NO
+Equity Holding #6,,equity,,,200.90,"225,000",USD,fileoutpart10.png,0.5,NO
+Equity Holding #7,,equity,,,225.105,"250,000",USD,fileoutpart10.png,0.5,NO
+Equity Holding #8,,equity,,,250.120,"275,000",USD,fileoutpart10.png,0.5,NO
+Investment Fund #1,,fund,,,,"80,000",USD,fileoutpart11.png,0.95,NO
+Investment Fund #2,,fund,,,,"110,000",USD,fileoutpart11.png,0.95,NO
+Investment Fund #3,,fund,,,,"140,000",USD,fileoutpart11.png,0.95,NO
+Investment Fund #4,,fund,,,,"170,000",USD,fileoutpart11.png,0.95,NO
+Investment Fund #5,,fund,,,,"200,000",USD,fileoutpart11.png,0.95,NO
+Investment Fund #6,,fund,,,,"230,000",USD,fileoutpart11.png,0.95,NO
+Government Bond #1,,bond,,,97.60,"150,000",USD,fileoutpart6.png,0.47,NO
+Government Bond #2,,bond,,,99.70,"200,000",USD,fileoutpart6.png,0.47,NO
+Government Bond #3,,bond,,,101.80,"250,000",USD,fileoutpart6.png,0.47,NO
+Corporate Bond #4,,bond,,,103.90,"300,000",USD,fileoutpart6.png,0.47,NO
+Corporate Bond #5,,bond,,,105.100,"350,000",USD,fileoutpart6.png,0.47,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart12.png,0.9,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart12.png,0.9,NO
+Asset #3,,other,,,,"140,000",USD,fileoutpart12.png,0.9,NO
+Asset #4,,other,,,,"170,000",USD,fileoutpart12.png,0.9,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart13.png,0.85,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart13.png,0.85,NO
+Asset #3,,other,,,,"140,000",USD,fileoutpart13.png,0.85,NO
+Asset #4,,other,,,,"170,000",USD,fileoutpart13.png,0.85,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart1.png,0.8,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart1.png,0.8,NO
+Asset #3,,other,,,,"140,000",USD,fileoutpart1.png,0.8,NO
+Asset #4,,other,,,,"170,000",USD,fileoutpart1.png,0.8,NO
+Asset #5,,other,,,,"200,000",USD,fileoutpart1.png,0.8,NO
+Asset #6,,other,,,,"230,000",USD,fileoutpart1.png,0.8,NO
+Asset #7,,other,,,,"260,000",USD,fileoutpart1.png,0.8,NO
+Asset #8,,other,,,,"290,000",USD,fileoutpart1.png,0.8,NO
+Asset #9,,other,,,,"320,000",USD,fileoutpart1.png,0.8,NO
+Asset #10,,other,,,,"350,000",USD,fileoutpart1.png,0.8,NO
+Asset #11,,other,,,,"380,000",USD,fileoutpart1.png,0.8,NO
+Asset #12,,other,,,,"410,000",USD,fileoutpart1.png,0.8,NO
+Asset #13,,other,,,,"440,000",USD,fileoutpart1.png,0.8,NO
+Asset #14,,other,,,,"470,000",USD,fileoutpart1.png,0.8,NO
+Asset #15,,other,,,,"500,000",USD,fileoutpart1.png,0.8,NO
+Asset #16,,other,,,,"530,000",USD,fileoutpart1.png,0.8,NO
+Asset #17,,other,,,,"560,000",USD,fileoutpart1.png,0.8,NO
+Asset #18,,other,,,,"590,000",USD,fileoutpart1.png,0.8,NO
+Asset #19,,other,,,,"620,000",USD,fileoutpart1.png,0.8,NO
+Asset #20,,other,,,,"650,000",USD,fileoutpart1.png,0.8,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart25.png,0.7,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart25.png,0.7,NO
+Asset #3,,other,,,,"140,000",USD,fileoutpart25.png,0.7,NO
+Asset #4,,other,,,,"170,000",USD,fileoutpart25.png,0.7,NO
+Asset #5,,other,,,,"200,000",USD,fileoutpart25.png,0.7,NO
+Asset #6,,other,,,,"230,000",USD,fileoutpart25.png,0.7,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart14.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart14.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart15.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart15.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart16.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart16.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart17.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart17.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart18.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart18.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart19.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart19.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart20.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart20.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart21.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart21.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart22.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart22.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart26.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart26.png,0.5,NO
+Asset #1,,other,,,,"80,000",USD,fileoutpart27.png,0.5,NO
+Asset #2,,other,,,,"110,000",USD,fileoutpart27.png,0.5,NO

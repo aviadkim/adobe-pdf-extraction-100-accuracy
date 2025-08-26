@@ -1,0 +1,1738 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Securities Data Extraction from Images</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+            .container { max-width: 1600px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+            .header { background: #28a745; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; text-align: center; }
+            .section { margin: 20px 0; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+            .very-high { border-left: 5px solid #dc3545; background: #fff5f5; }
+            .high { border-left: 5px solid #ffc107; background: #fffef5; }
+            .medium { border-left: 5px solid #17a2b8; background: #f5feff; }
+            .low { border-left: 5px solid #6c757d; background: #f8f9fa; opacity: 0.7; }
+            .image-container { text-align: center; margin: 20px 0; }
+            .image-container img { max-width: 100%; height: auto; border: 2px solid #ddd; border-radius: 5px; cursor: pointer; }
+            .image-container img:hover { border-color: #007bff; }
+            .extraction-form { background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0; }
+            .form-row { margin: 10px 0; }
+            .form-row label { display: inline-block; width: 150px; font-weight: bold; }
+            .form-row input, .form-row textarea { width: 300px; padding: 5px; border: 1px solid #ddd; border-radius: 3px; }
+            .btn { padding: 10px 15px; margin: 5px; border: none; border-radius: 3px; cursor: pointer; }
+            .btn-primary { background: #007bff; color: white; }
+            .btn-success { background: #28a745; color: white; }
+            .instructions { background: #d1ecf1; padding: 15px; border-radius: 5px; margin: 15px 0; }
+            .priority-badge { padding: 5px 10px; border-radius: 15px; color: white; font-weight: bold; }
+            .very-high-badge { background: #dc3545; }
+            .high-badge { background: #ffc107; color: black; }
+            .medium-badge { background: #17a2b8; }
+            .low-badge { background: #6c757d; }
+        </style>
+        <script>
+            let extractedSecurities = [];
+            
+            function addSecurity(imageFile) {
+                const name = document.getElementById(imageFile + '_name').value;
+                const isin = document.getElementById(imageFile + '_isin').value;
+                const price = document.getElementById(imageFile + '_price').value;
+                const value = document.getElementById(imageFile + '_value').value;
+                const currency = document.getElementById(imageFile + '_currency').value;
+                const quantity = document.getElementById(imageFile + '_quantity').value;
+                
+                if (name) {
+                    const security = {
+                        source_image: imageFile,
+                        name: name,
+                        isin: isin,
+                        price: price,
+                        market_value: value,
+                        currency: currency,
+                        quantity: quantity,
+                        timestamp: new Date().toISOString()
+                    };
+                    
+                    extractedSecurities.push(security);
+                    
+                    // Clear form
+                    document.getElementById(imageFile + '_name').value = '';
+                    document.getElementById(imageFile + '_isin').value = '';
+                    document.getElementById(imageFile + '_price').value = '';
+                    document.getElementById(imageFile + '_value').value = '';
+                    document.getElementById(imageFile + '_currency').value = '';
+                    document.getElementById(imageFile + '_quantity').value = '';
+                    
+                    updateSecuritiesList();
+                    alert('Security added successfully!');
+                }
+            }
+            
+            function updateSecuritiesList() {
+                const listDiv = document.getElementById('securities-list');
+                listDiv.innerHTML = '<h3>Extracted Securities (' + extractedSecurities.length + '):</h3>';
+                
+                extractedSecurities.forEach((security, index) => {
+                    listDiv.innerHTML += `
+                        <div style="background: #e8f5e8; padding: 10px; margin: 5px 0; border-radius: 3px;">
+                            <strong>${security.name}</strong><br>
+                            ISIN: ${security.isin} | Price: ${security.price} | Value: ${security.market_value}<br>
+                            Currency: ${security.currency} | Quantity: ${security.quantity}<br>
+                            <small>Source: ${security.source_image}</small>
+                        </div>
+                    `;
+                });
+            }
+            
+            function exportSecurities() {
+                if (extractedSecurities.length === 0) {
+                    alert('No securities extracted yet!');
+                    return;
+                }
+                
+                const dataStr = JSON.stringify(extractedSecurities, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'extracted_securities_data.json';
+                link.click();
+                
+                // Also create CSV
+                let csvContent = 'Name,ISIN,Price,Market Value,Currency,Quantity,Source Image\n';
+                extractedSecurities.forEach(security => {
+                    csvContent += `"${security.name}","${security.isin}","${security.price}","${security.market_value}","${security.currency}","${security.quantity}","${security.source_image}"\n`;
+                });
+                
+                const csvBlob = new Blob([csvContent], {type: 'text/csv'});
+                const csvUrl = URL.createObjectURL(csvBlob);
+                const csvLink = document.createElement('a');
+                csvLink.href = csvUrl;
+                csvLink.download = 'extracted_securities_data.csv';
+                csvLink.click();
+                
+                alert('Securities data exported as JSON and CSV!');
+            }
+            
+            function openImageFullSize(imagePath) {
+                window.open(imagePath, '_blank');
+            }
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🏦 Securities Data Extraction Interface</h1>
+                <p>Extract individual securities data from high-quality table images</p>
+                <p><strong>Goal:</strong> Get every security with name, ISIN, price, and market value</p>
+            </div>
+            
+            <div class="instructions">
+                <h3>📋 Instructions:</h3>
+                <ol>
+                    <li><strong>Focus on VERY HIGH priority images first</strong> (Bonds and Equities sections)</li>
+                    <li><strong>Click on images</strong> to view them full-size for better readability</li>
+                    <li><strong>Extract each security</strong> you see in the tables</li>
+                    <li><strong>Fill in all available data</strong> for each security</li>
+                    <li><strong>Export your data</strong> when complete</li>
+                </ol>
+                <p><strong>💡 Tip:</strong> Look for tables with columns like: Security Name, ISIN, Price, Market Value, Currency</p>
+            </div>
+            
+            <div id="securities-list" style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                <h3>Extracted Securities (0):</h3>
+                <p>Securities you extract will appear here...</p>
+            </div>
+            
+            <div style="text-align: center; margin: 20px 0;">
+                <button class="btn btn-success" onclick="exportSecurities()" style="font-size: 18px; padding: 15px 30px;">
+                    📥 Export All Securities Data
+                </button>
+            </div>
+    
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart27.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 27</li>
+                            <li><strong>Size:</strong> 589.9 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart27.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart27.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart27.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart27.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart27.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart27.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart27.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart27.png" alt="fileoutpart27.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart27.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart26.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 26</li>
+                            <li><strong>Size:</strong> 508.2 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart26.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart26.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart26.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart26.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart26.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart26.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart26.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart26.png" alt="fileoutpart26.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart26.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart25.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 25</li>
+                            <li><strong>Size:</strong> 746.0 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart25.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart25.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart25.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart25.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart25.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart25.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart25.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart25.png" alt="fileoutpart25.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart25.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart22.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 22</li>
+                            <li><strong>Size:</strong> 544.4 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart22.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart22.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart22.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart22.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart22.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart22.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart22.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart22.png" alt="fileoutpart22.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart22.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart21.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 21</li>
+                            <li><strong>Size:</strong> 588.0 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart21.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart21.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart21.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart21.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart21.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart21.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart21.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart21.png" alt="fileoutpart21.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart21.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart19.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 19</li>
+                            <li><strong>Size:</strong> 495.9 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart19.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart19.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart19.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart19.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart19.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart19.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart19.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart19.png" alt="fileoutpart19.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart19.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart18.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 18</li>
+                            <li><strong>Size:</strong> 577.2 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart18.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart18.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart18.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart18.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart18.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart18.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart18.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart18.png" alt="fileoutpart18.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart18.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart17.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 17</li>
+                            <li><strong>Size:</strong> 597.9 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart17.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart17.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart17.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart17.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart17.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart17.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart17.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart17.png" alt="fileoutpart17.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart17.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart16.png - Appendices/Notes
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 16</li>
+                            <li><strong>Size:</strong> 602.5 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart16.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart16.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart16.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart16.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart16.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart16.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart16.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart16.png" alt="fileoutpart16.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart16.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart10.png - EQUITIES SECTION
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 10</li>
+                            <li><strong>Size:</strong> 2.5 KB</li>
+                            <li><strong>Dimensions:</strong> 120x111</li>
+                            <li><strong>Likely Securities:</strong> ✅ YES</li>
+                        </ul>
+                        
+                        <div class="instructions"><strong>🎯 PRIORITY:</strong> This image likely contains main securities data with individual holdings!</div>
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart10.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart10.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart10.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart10.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart10.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart10.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart10.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart10.png" alt="fileoutpart10.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart10.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart6.png - BONDS SECTION
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 6</li>
+                            <li><strong>Size:</strong> 0.6 KB</li>
+                            <li><strong>Dimensions:</strong> 96x38</li>
+                            <li><strong>Likely Securities:</strong> ✅ YES</li>
+                        </ul>
+                        
+                        <div class="instructions"><strong>🎯 PRIORITY:</strong> This image likely contains main securities data with individual holdings!</div>
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart6.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart6.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart6.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart6.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart6.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart6.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart6.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart6.png" alt="fileoutpart6.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart6.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section very-high">
+                <h2>
+                    📊 fileoutpart1.png - Summary/Overview
+                    <span class="priority-badge very-high-badge">VERY HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 1</li>
+                            <li><strong>Size:</strong> 1943.4 KB</li>
+                            <li><strong>Dimensions:</strong> 2444x1554</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart1.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart1.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart1.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart1.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart1.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart1.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart1.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart1.png" alt="fileoutpart1.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart1.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart24.png - Appendices/Notes
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 24</li>
+                            <li><strong>Size:</strong> 343.3 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart24.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart24.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart24.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart24.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart24.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart24.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart24.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart24.png" alt="fileoutpart24.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart24.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart23.png - Appendices/Notes
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 23</li>
+                            <li><strong>Size:</strong> 356.5 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart23.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart23.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart23.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart23.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart23.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart23.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart23.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart23.png" alt="fileoutpart23.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart23.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart20.png - Appendices/Notes
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 20</li>
+                            <li><strong>Size:</strong> 352.1 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart20.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart20.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart20.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart20.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart20.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart20.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart20.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart20.png" alt="fileoutpart20.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart20.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart15.png - Appendices/Notes
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 15</li>
+                            <li><strong>Size:</strong> 384.1 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart15.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart15.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart15.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart15.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart15.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart15.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart15.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart15.png" alt="fileoutpart15.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart15.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart14.png - Appendices/Notes
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 14</li>
+                            <li><strong>Size:</strong> 366.2 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3053</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart14.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart14.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart14.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart14.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart14.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart14.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart14.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart14.png" alt="fileoutpart14.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart14.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart13.png - OTHER ASSETS
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 13</li>
+                            <li><strong>Size:</strong> 370.7 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3054</li>
+                            <li><strong>Likely Securities:</strong> ✅ YES</li>
+                        </ul>
+                        
+                        <div class="instructions"><strong>🎯 PRIORITY:</strong> This image likely contains main securities data with individual holdings!</div>
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart13.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart13.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart13.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart13.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart13.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart13.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart13.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart13.png" alt="fileoutpart13.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart13.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart12.png - OTHER ASSETS
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 12</li>
+                            <li><strong>Size:</strong> 394.3 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3054</li>
+                            <li><strong>Likely Securities:</strong> ✅ YES</li>
+                        </ul>
+                        
+                        <div class="instructions"><strong>🎯 PRIORITY:</strong> This image likely contains main securities data with individual holdings!</div>
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart12.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart12.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart12.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart12.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart12.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart12.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart12.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart12.png" alt="fileoutpart12.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart12.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section high">
+                <h2>
+                    📊 fileoutpart11.png - OTHER ASSETS
+                    <span class="priority-badge high-badge">HIGH</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 11</li>
+                            <li><strong>Size:</strong> 373.2 KB</li>
+                            <li><strong>Dimensions:</strong> 2275x3054</li>
+                            <li><strong>Likely Securities:</strong> ✅ YES</li>
+                        </ul>
+                        
+                        <div class="instructions"><strong>🎯 PRIORITY:</strong> This image likely contains main securities data with individual holdings!</div>
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart11.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart11.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart11.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart11.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart11.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart11.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart11.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart11.png" alt="fileoutpart11.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart11.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section medium">
+                <h2>
+                    📊 fileoutpart5.png - Headers/Summary
+                    <span class="priority-badge medium-badge">MEDIUM</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 5</li>
+                            <li><strong>Size:</strong> 0.6 KB</li>
+                            <li><strong>Dimensions:</strong> 62x45</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart5.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart5.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart5.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart5.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart5.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart5.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart5.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart5.png" alt="fileoutpart5.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart5.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section medium">
+                <h2>
+                    📊 fileoutpart4.png - Headers/Summary
+                    <span class="priority-badge medium-badge">MEDIUM</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 4</li>
+                            <li><strong>Size:</strong> 0.6 KB</li>
+                            <li><strong>Dimensions:</strong> 31x45</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart4.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart4.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart4.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart4.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart4.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart4.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart4.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart4.png" alt="fileoutpart4.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart4.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section medium">
+                <h2>
+                    📊 fileoutpart3.png - Headers/Summary
+                    <span class="priority-badge medium-badge">MEDIUM</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 3</li>
+                            <li><strong>Size:</strong> 0.5 KB</li>
+                            <li><strong>Dimensions:</strong> 28x36</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart3.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart3.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart3.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart3.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart3.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart3.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart3.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart3.png" alt="fileoutpart3.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart3.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section medium">
+                <h2>
+                    📊 fileoutpart2.png - Headers/Summary
+                    <span class="priority-badge medium-badge">MEDIUM</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 2</li>
+                            <li><strong>Size:</strong> 2.5 KB</li>
+                            <li><strong>Dimensions:</strong> 114x106</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart2.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart2.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart2.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart2.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart2.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart2.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart2.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart2.png" alt="fileoutpart2.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart2.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section medium">
+                <h2>
+                    📊 fileoutpart0.png - Headers/Summary
+                    <span class="priority-badge medium-badge">MEDIUM</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 0</li>
+                            <li><strong>Size:</strong> 5.3 KB</li>
+                            <li><strong>Dimensions:</strong> 488x94</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart0.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart0.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart0.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart0.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart0.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart0.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart0.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart0.png" alt="fileoutpart0.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart0.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section low">
+                <h2>
+                    📊 fileoutpart9.png - Unknown
+                    <span class="priority-badge low-badge">LOW</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 9</li>
+                            <li><strong>Size:</strong> 0.6 KB</li>
+                            <li><strong>Dimensions:</strong> 66x39</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart9.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart9.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart9.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart9.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart9.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart9.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart9.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart9.png" alt="fileoutpart9.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart9.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section low">
+                <h2>
+                    📊 fileoutpart8.png - Unknown
+                    <span class="priority-badge low-badge">LOW</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 8</li>
+                            <li><strong>Size:</strong> 0.6 KB</li>
+                            <li><strong>Dimensions:</strong> 32x44</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart8.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart8.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart8.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart8.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart8.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart8.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart8.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart8.png" alt="fileoutpart8.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart8.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section low">
+                <h2>
+                    📊 fileoutpart7.png - Unknown
+                    <span class="priority-badge low-badge">LOW</span>
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                    <div>
+                        <h4>📈 Image Details:</h4>
+                        <ul>
+                            <li><strong>File Number:</strong> 7</li>
+                            <li><strong>Size:</strong> 0.6 KB</li>
+                            <li><strong>Dimensions:</strong> 65x43</li>
+                            <li><strong>Likely Securities:</strong> ❌ NO</li>
+                        </ul>
+                        
+                        
+                    </div>
+                    
+                    <div class="extraction-form">
+                        <h4>📝 Extract Security Data:</h4>
+                        <div class="form-row">
+                            <label>Security Name:</label>
+                            <input type="text" id="fileoutpart7.png_name" placeholder="e.g., Swiss Government Bond 2025">
+                        </div>
+                        <div class="form-row">
+                            <label>ISIN Code:</label>
+                            <input type="text" id="fileoutpart7.png_isin" placeholder="e.g., CH0123456789">
+                        </div>
+                        <div class="form-row">
+                            <label>Price:</label>
+                            <input type="text" id="fileoutpart7.png_price" placeholder="e.g., 102.50">
+                        </div>
+                        <div class="form-row">
+                            <label>Market Value:</label>
+                            <input type="text" id="fileoutpart7.png_value" placeholder="e.g., 1,234,567.89">
+                        </div>
+                        <div class="form-row">
+                            <label>Currency:</label>
+                            <input type="text" id="fileoutpart7.png_currency" placeholder="e.g., USD">
+                        </div>
+                        <div class="form-row">
+                            <label>Quantity:</label>
+                            <input type="text" id="fileoutpart7.png_quantity" placeholder="e.g., 1,000">
+                        </div>
+                        <button class="btn btn-primary" onclick="addSecurity('fileoutpart7.png')">
+                            ➕ Add This Security
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart7.png" alt="fileoutpart7.png" onclick="openImageFullSize('output_advanced/messos 30.5/figures\fileoutpart7.png')" title="Click to view full size">
+                </div>
+            </div>
+        
+            <div class="section" style="background: #d4edda; border-color: #c3e6cb;">
+                <h2>🎉 Extraction Complete!</h2>
+                <p><strong>Once you've extracted all securities:</strong></p>
+                <ol>
+                    <li>Click "Export All Securities Data" to save your work</li>
+                    <li>You'll get both JSON and CSV files with all securities</li>
+                    <li>The data will include every security with complete information</li>
+                </ol>
+                
+                <div style="text-align: center; margin: 20px 0;">
+                    <button class="btn btn-success" onclick="exportSecurities()" style="font-size: 20px; padding: 20px 40px;">
+                        🎯 Export Complete Securities Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+    

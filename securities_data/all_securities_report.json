@@ -1,0 +1,344 @@
+{
+  "extraction_summary": {
+    "total_text_elements": 29,
+    "potential_securities_found": 5,
+    "amounts_and_prices_found": 19,
+    "currencies_found": 1,
+    "identifiers_found": 0,
+    "reconstructed_tables": 1,
+    "high_confidence_images": 10,
+    "total_securities_identified": 5
+  },
+  "all_securities_found": [
+    {
+      "source": "text_analysis",
+      "name": "Corner Banca SA // Todistrasse 27 // Postfach 1640 // 8027 Zurich_Switzerland // Hauptsitz Via Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20 // Fax+41442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 IVA",
+      "page": 0,
+      "position": "(30, 45)",
+      "confidence": "medium",
+      "type": "identified_from_text"
+    },
+    {
+      "source": "text_analysis",
+      "name": "MESSOS ENTERPRISES LTD.",
+      "page": 0,
+      "position": "(155, 377)",
+      "confidence": "medium",
+      "type": "identified_from_text"
+    },
+    {
+      "source": "text_analysis",
+      "name": "Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA",
+      "page": 1,
+      "position": "(30, 46)",
+      "confidence": "medium",
+      "type": "identified_from_text"
+    },
+    {
+      "source": "text_analysis",
+      "name": "Bonds 6",
+      "page": 1,
+      "position": "(79, 366)",
+      "confidence": "medium",
+      "type": "identified_from_text"
+    },
+    {
+      "source": "text_analysis",
+      "name": "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223",
+      "page": 1,
+      "position": "(609, 532)",
+      "confidence": "medium",
+      "type": "identified_from_text"
+    }
+  ],
+  "financial_elements": {
+    "potential_securities": [
+      "Corner Banca SA // Todistrasse 27 // Postfach 1640 // 8027 Zurich_Switzerland // Hauptsitz Via Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20 // Fax+41442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 IVA",
+      "MESSOS ENTERPRISES LTD.",
+      "Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA",
+      "Bonds 6",
+      "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223"
+    ],
+    "amounts_and_prices": [
+      "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I",
+      "Corner Banca SA // Todistrasse 27 // Postfach 1640 // 8027 Zurich_Switzerland // Hauptsitz Via Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20 // Fax+41442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 IVA",
+      "Valuation as of 30.05.2025",
+      "Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA",
+      "Print date 31.05.2025 // Page I",
+      "Notices and other information 17",
+      "Glossary 15",
+      "Expected Cash Flows (Overview) 14",
+      "Other assets 13",
+      "Structured products 11",
+      "Equities 10",
+      "Bonds 6",
+      "Liquidity and liabilities 5",
+      "Asset Listing 5",
+      "Performance Overview/Evolution 4",
+      "Currency allocation 3",
+      "Asset Allocation 2",
+      "Summary 1 h",
+      "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223"
+    ],
+    "currencies": [
+      "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I"
+    ],
+    "identifiers": [],
+    "quantities": []
+  },
+  "reconstructed_tables": [
+    {
+      "page": 1,
+      "rows": 2,
+      "data": [
+        {
+          "row_data": [
+            "Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA",
+            "Print date 31.05.2025 // Page I",
+            "I"
+          ],
+          "elements": [
+            {
+              "text": "Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA",
+              "page": 1,
+              "bounds": [
+                30.0,
+                46.32440185546875,
+                371.356201171875,
+                67.67849731445312
+              ],
+              "x": 30.0,
+              "y": 46.32440185546875,
+              "width": 371.356201171875,
+              "height": 67.67849731445312,
+              "font_size": 0,
+              "font_name": "*Arial-4076"
+            },
+            {
+              "text": "Print date 31.05.2025 // Page I",
+              "page": 1,
+              "bounds": [
+                623.0399932861328,
+                50.619293212890625,
+                729.0192565917969,
+                57.84930419921875
+              ],
+              "x": 623.0399932861328,
+              "y": 50.619293212890625,
+              "width": 729.0192565917969,
+              "height": 57.84930419921875,
+              "font_size": 0,
+              "font_name": "*Arial-Bold-4073"
+            },
+            {
+              "text": "I",
+              "page": 1,
+              "bounds": [
+                735.3600006103516,
+                41.07929992675781,
+                742.8733978271484,
+                67.71929931640625
+              ],
+              "x": 735.3600006103516,
+              "y": 41.07929992675781,
+              "width": 742.8733978271484,
+              "height": 67.71929931640625,
+              "font_size": 0,
+              "font_name": "*Times New Roman-Bold-4069"
+            }
+          ],
+          "y_position": 45,
+          "is_likely_security": false,
+          "has_financial_data": true
+        },
+        {
+          "row_data": [
+            "Equities 10",
+            "-",
+            "-"
+          ],
+          "elements": [
+            {
+              "text": "Equities 10",
+              "page": 1,
+              "bounds": [
+                78.70950317382812,
+                349.8135070800781,
+                429.99928283691406,
+                360.8802032470703
+              ],
+              "x": 78.70950317382812,
+              "y": 349.8135070800781,
+              "width": 429.99928283691406,
+              "height": 360.8802032470703,
+              "font_size": 0,
+              "font_name": "*Arial-4079"
+            },
+            {
+              "text": "-",
+              "page": 1,
+              "bounds": [
+                131.0399932861328,
+                348.1179962158203,
+                136.3199462890625,
+                348.8399963378906
+              ],
+              "x": 131.0399932861328,
+              "y": 348.1179962158203,
+              "width": 136.3199462890625,
+              "height": 348.8399963378906,
+              "font_size": 0,
+              "font_name": "*Times New Roman-4070"
+            },
+            {
+              "text": "-",
+              "page": 1,
+              "bounds": [
+                337.1999969482422,
+                347.6383056640625,
+                342.72015380859375,
+                348.3603057861328
+              ],
+              "x": 337.1999969482422,
+              "y": 347.6383056640625,
+              "width": 342.72015380859375,
+              "height": 348.3603057861328,
+              "font_size": 0,
+              "font_name": "*Times New Roman-4070"
+            }
+          ],
+          "y_position": 345,
+          "is_likely_security": false,
+          "has_financial_data": true
+        }
+      ]
+    }
+  ],
+  "high_confidence_images": [
+    {
+      "filename": "fileoutpart1.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart1.png",
+      "file_size": 1990086,
+      "dimensions": "2444x1554",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart16.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart16.png",
+      "file_size": 616947,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart17.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart17.png",
+      "file_size": 612240,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart18.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart18.png",
+      "file_size": 591029,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart19.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart19.png",
+      "file_size": 507823,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart21.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart21.png",
+      "file_size": 602139,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart22.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart22.png",
+      "file_size": 557470,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart25.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart25.png",
+      "file_size": 763868,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart26.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart26.png",
+      "file_size": 520439,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    },
+    {
+      "filename": "fileoutpart27.png",
+      "path": "output_advanced/messos 30.5/figures\\fileoutpart27.png",
+      "file_size": 604033,
+      "dimensions": "2275x3053",
+      "confidence": "VERY_HIGH",
+      "likely_content": "Main securities holdings table"
+    }
+  ],
+  "detailed_analysis": {
+    "text_based_securities": [
+      {
+        "source": "text_analysis",
+        "name": "Corner Banca SA // Todistrasse 27 // Postfach 1640 // 8027 Zurich_Switzerland // Hauptsitz Via Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20 // Fax+41442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 IVA",
+        "page": 0,
+        "position": "(30, 45)",
+        "confidence": "medium",
+        "type": "identified_from_text"
+      },
+      {
+        "source": "text_analysis",
+        "name": "MESSOS ENTERPRISES LTD.",
+        "page": 0,
+        "position": "(155, 377)",
+        "confidence": "medium",
+        "type": "identified_from_text"
+      },
+      {
+        "source": "text_analysis",
+        "name": "Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA",
+        "page": 1,
+        "position": "(30, 46)",
+        "confidence": "medium",
+        "type": "identified_from_text"
+      },
+      {
+        "source": "text_analysis",
+        "name": "Bonds 6",
+        "page": 1,
+        "position": "(79, 366)",
+        "confidence": "medium",
+        "type": "identified_from_text"
+      },
+      {
+        "source": "text_analysis",
+        "name": "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223",
+        "page": 1,
+        "position": "(609, 532)",
+        "confidence": "medium",
+        "type": "identified_from_text"
+      }
+    ],
+    "table_based_securities": []
+  }
+}

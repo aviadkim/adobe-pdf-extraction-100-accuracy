@@ -1,0 +1,5 @@
+name,type,source,confidence,extraction_method,source_image,file_size_kb,securities_potential,requires_ocr
+Equity Security from fileoutpart10.png,equity,pattern_analysis,0.6,estimated_from_image_analysis,,,,
+Bond Security from fileoutpart6.png,bond,pattern_analysis,0.6,estimated_from_image_analysis,,,,
+Securities from EQUITIES_SECTION (Page 10),equities,,0.7,image_analysis_estimate,fileoutpart10.png,2.5,VERY_HIGH,True
+Securities from BONDS_SECTION (Page 6),bonds,,0.7,image_analysis_estimate,fileoutpart6.png,0.6,VERY_HIGH,True

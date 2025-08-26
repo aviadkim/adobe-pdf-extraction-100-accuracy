@@ -1,0 +1,567 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Adobe PDF Extract API - Messos Financial Data</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+            .container { max-width: 1200px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; }
+            .header { background: #2c3e50; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+            .section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+            .financial-data { background: #e8f5e8; }
+            .warning { background: #fff3cd; border-color: #ffeaa7; }
+            .success { background: #d4edda; border-color: #c3e6cb; }
+            .figure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; }
+            .figure-item { border: 1px solid #ddd; padding: 10px; border-radius: 5px; background: white; }
+            .figure-item img { max-width: 100%; height: auto; border: 1px solid #ccc; }
+            .text-element { margin: 5px 0; padding: 8px; background: #f8f9fa; border-left: 3px solid #007bff; }
+            .financial-text { border-left-color: #28a745; background: #e8f5e8; }
+            .table-candidate { border: 2px solid #28a745; }
+            .low-potential { opacity: 0.6; }
+            pre { background: #f8f9fa; padding: 10px; border-radius: 3px; overflow-x: auto; }
+            .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+            .stat-box { background: #007bff; color: white; padding: 15px; border-radius: 5px; text-align: center; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🏦 Adobe PDF Extract API - Messos Financial Data Analysis</h1>
+                <p>Comprehensive view of extracted data with OCR feasibility assessment</p>
+            </div>
+            
+            <div class="section success">
+                <h2>📊 Extraction Summary</h2>
+                <div class="stats">
+                    <div class="stat-box">
+                        <h3>65</h3>
+                        <p>Total Elements</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>28</h3>
+                        <p>Figure Images</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>29</h3>
+                        <p>Text Elements</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>19</h3>
+                        <p>Pages</p>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="section financial-data">
+                <h2>💰 Financial Text Elements (9 found)</h2>
+                <p><strong>Key Question:</strong> Can OCR accurately match securities with their prices/valuations?</p>
+    
+                <div class="text-element financial-text">
+                    <strong>#1 - Page 0</strong><br>
+                    "Valuation as of 30.05.2025"<br>
+                    <small>Bounds: [154.31700134277344, 408.6697998046875, 350.3807678222656, 460.6087951660156]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#2 - Page 0</strong><br>
+                    "MESSOS ENTERPRISES LTD."<br>
+                    <small>Bounds: [154.55999755859375, 376.6510009765625, 341.6559753417969, 386.51800537109375]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#3 - Page 0</strong><br>
+                    "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I"<br>
+                    <small>Bounds: [-0.3074951171875, 40.37249755859375, 781.4400024414062, 586.4400024414062]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#4 - Page 1</strong><br>
+                    "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223"<br>
+                    <small>Bounds: [609.1199951171875, 532.4579925537109, 729.0890350341797, 555.760498046875]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#5 - Page 1</strong><br>
+                    "Asset Allocation 2"<br>
+                    <small>Bounds: [37.678497314453125, 467.16749572753906, 427.930419921875, 478.3815002441406]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#6 - Page 1</strong><br>
+                    "Assets and Liabilities Structure --"<br>
+                    <small>Bounds: [77.99850463867188, 448.43800354003906, 342.71775817871094, 461.5500030517578]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#7 - Page 1</strong><br>
+                    "Asset Listing 5"<br>
+                    <small>Bounds: [37.43400573730469, 399.84779357910156, 427.9563751220703, 411.2487030029297]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#8 - Page 1</strong><br>
+                    "Bonds 6"<br>
+                    <small>Bounds: [78.70950317382812, 366.4931945800781, 427.679443359375, 377.6907043457031]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#9 - Page 1</strong><br>
+                    "Other assets 13"<br>
+                    <small>Bounds: [78.47999572753906, 316.2344970703125, 429.89610290527344, 327.22349548339844]</small>
+                </div>
+        
+            </div>
+            
+            <div class="section">
+                <h2>📝 All Text Elements</h2>
+    
+                <div class="text-element">
+                    <strong>#1 - Page 0</strong><br>
+                    "corner"<br>
+                    <small>Bounds: [-0.3074951171875, 40.37249755859375, 781.3200073242188, 586.4400024414062]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#2 - Page 0</strong><br>
+                    "Valuation as of 30.05.2025"<br>
+                    <small>Bounds: [154.31700134277344, 408.6697998046875, 350.3807678222656, 460.6087951660156]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#3 - Page 0</strong><br>
+                    "MESSOS ENTERPRISES LTD."<br>
+                    <small>Bounds: [154.55999755859375, 376.6510009765625, 341.6559753417969, 386.51800537109375]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#4 - Page 0</strong><br>
+                    "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I"<br>
+                    <small>Bounds: [-0.3074951171875, 40.37249755859375, 781.4400024414062, 586.4400024414062]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#5 - Page 0</strong><br>
+                    "Corner Banca SA // Todistrasse 27 // Postfach 1640 // 8027 Zurich_Switzerland // Hauptsitz Via Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20 // Fax+41442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 IVA"<br>
+                    <small>Bounds: [29.759994506835938, 44.7489013671875, 371.1105194091797, 65.78399658203125]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#6 - Page 1</strong><br>
+                    "ormer"<br>
+                    <small>Bounds: [30.720001220703125, 539.6255035400391, 145.3338165283203, 558.4465026855469]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#7 - Page 1</strong><br>
+                    "MESSOS ENTERPRISES LTD. Valuation as of 30.05.2025 Client Number 366223"<br>
+                    <small>Bounds: [609.1199951171875, 532.4579925537109, 729.0890350341797, 555.760498046875]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#8 - Page 1</strong><br>
+                    "Index"<br>
+                    <small>Bounds: [695.7599945068359, 508.1925048828125, 730.3350830078125, 517.3300018310547]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#9 - Page 1</strong><br>
+                    "Summary 1 h"<br>
+                    <small>Bounds: [37.91999816894531, 484.68150329589844, 426.8802185058594, 501.47999572753906]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#10 - Page 1</strong><br>
+                    "Asset Allocation 2"<br>
+                    <small>Bounds: [37.678497314453125, 467.16749572753906, 427.930419921875, 478.3815002441406]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#11 - Page 1</strong><br>
+                    "-"<br>
+                    <small>Bounds: [131.0399932861328, 448.9183044433594, 136.56015014648438, 449.6403045654297]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#12 - Page 1</strong><br>
+                    "Assets and Liabilities Structure --"<br>
+                    <small>Bounds: [77.99850463867188, 448.43800354003906, 342.71775817871094, 461.5500030517578]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#13 - Page 1</strong><br>
+                    "Currency allocation 3"<br>
+                    <small>Bounds: [78.72000122070312, 433.8132019042969, 427.5832824707031, 444.79620361328125]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#14 - Page 1</strong><br>
+                    "Performance Overview/Evolution 4"<br>
+                    <small>Bounds: [38.15849304199219, 416.76780700683594, 427.9203338623047, 427.9122009277344]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#15 - Page 1</strong><br>
+                    "Asset Listing 5"<br>
+                    <small>Bounds: [37.43400573730469, 399.84779357910156, 427.9563751220703, 411.2487030029297]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#16 - Page 1</strong><br>
+                    "Liquidity and liabilities 5"<br>
+                    <small>Bounds: [78.70950317382812, 383.2935028076172, 427.930419921875, 394.4066925048828]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#17 - Page 1</strong><br>
+                    "Bonds 6"<br>
+                    <small>Bounds: [78.70950317382812, 366.4931945800781, 427.679443359375, 377.6907043457031]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#18 - Page 1</strong><br>
+                    "Equities 10"<br>
+                    <small>Bounds: [78.70950317382812, 349.8135070800781, 429.99928283691406, 360.8802032470703]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#19 - Page 1</strong><br>
+                    "-"<br>
+                    <small>Bounds: [131.0399932861328, 348.1179962158203, 136.3199462890625, 348.8399963378906]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#20 - Page 1</strong><br>
+                    "-"<br>
+                    <small>Bounds: [337.1999969482422, 347.6383056640625, 342.72015380859375, 348.3603057861328]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#21 - Page 1</strong><br>
+                    "Structured products 11"<br>
+                    <small>Bounds: [78.47999572753906, 332.8874969482422, 429.5980987548828, 343.8869934082031]</small>
+                </div>
+        
+                <div class="text-element financial-text">
+                    <strong>#22 - Page 1</strong><br>
+                    "Other assets 13"<br>
+                    <small>Bounds: [78.47999572753906, 316.2344970703125, 429.89610290527344, 327.22349548339844]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#23 - Page 1</strong><br>
+                    "Expected Cash Flows (Overview) 14"<br>
+                    <small>Bounds: [37.91850280761719, 299.1614990234375, 428.6720886230469, 310.30799865722656]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#24 - Page 1</strong><br>
+                    "Glossary 15"<br>
+                    <small>Bounds: [37.529998779296875, 282.2984924316406, 428.1782989501953, 293.6445007324219]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#25 - Page 1</strong><br>
+                    "Notices and other information 17"<br>
+                    <small>Bounds: [37.91850280761719, 265.5614929199219, 428.1480255126953, 276.718505859375]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#26 - Page 1</strong><br>
+                    "Corner Banca SA // Todistrasse27 // Postfach 1640 // 8027 Zurich_Switzerland // HauptsitzVia Canova 16, 6901 Lugano_Switzerland Tel. +414421810 20// Fax +41 442181029 // info@corner.ch // corner.ch Swift CBLUCH2280A // Clearing 8490 // CHE-105.962.409 VA"<br>
+                    <small>Bounds: [30.0, 46.32440185546875, 371.356201171875, 67.67849731445312]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#27 - Page 1</strong><br>
+                    "Print date 31.05.2025 // Page I"<br>
+                    <small>Bounds: [623.0399932861328, 50.619293212890625, 729.0192565917969, 57.84930419921875]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#28 - Page 1</strong><br>
+                    "I"<br>
+                    <small>Bounds: [735.3600006103516, 41.07929992675781, 742.8733978271484, 67.71929931640625]</small>
+                </div>
+        
+                <div class="text-element">
+                    <strong>#29 - Page 1</strong><br>
+                    "e"<br>
+                    <small>Bounds: [0.18231201171875, 26.042587280273438, 793.3859100341797, 588.1836700439453]</small>
+                </div>
+        
+            </div>
+            
+            <div class="section">
+                <h2>🖼️ Extracted Figure Images (28 total)</h2>
+                <p><strong>OCR Assessment:</strong> Which images are most likely to contain accurate table data?</p>
+                <div class="figure-grid">
+    
+                <div class="figure-item">
+                    <h4 style="color: #ffc107;">fileoutpart0.png</h4>
+                    <p><strong>OCR Potential: MEDIUM</strong></p>
+                    <p>Size: 5,470 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart0.png" alt="fileoutpart0.png" title="Click to view full size">
+                    <p><small>⚠️ May need manual review</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart1.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 1,990,086 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart1.png" alt="fileoutpart1.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item">
+                    <h4 style="color: #ffc107;">fileoutpart10.png</h4>
+                    <p><strong>OCR Potential: MEDIUM</strong></p>
+                    <p>Size: 2,562 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart10.png" alt="fileoutpart10.png" title="Click to view full size">
+                    <p><small>⚠️ May need manual review</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart11.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 382,151 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart11.png" alt="fileoutpart11.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart12.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 403,727 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart12.png" alt="fileoutpart12.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart13.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 379,612 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart13.png" alt="fileoutpart13.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart14.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 375,038 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart14.png" alt="fileoutpart14.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart15.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 393,284 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart15.png" alt="fileoutpart15.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart16.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 616,947 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart16.png" alt="fileoutpart16.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart17.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 612,240 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart17.png" alt="fileoutpart17.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart18.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 591,029 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart18.png" alt="fileoutpart18.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart19.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 507,823 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart19.png" alt="fileoutpart19.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item">
+                    <h4 style="color: #ffc107;">fileoutpart2.png</h4>
+                    <p><strong>OCR Potential: MEDIUM</strong></p>
+                    <p>Size: 2,540 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart2.png" alt="fileoutpart2.png" title="Click to view full size">
+                    <p><small>⚠️ May need manual review</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart20.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 360,509 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart20.png" alt="fileoutpart20.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart21.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 602,139 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart21.png" alt="fileoutpart21.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart22.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 557,470 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart22.png" alt="fileoutpart22.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart23.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 365,073 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart23.png" alt="fileoutpart23.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart24.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 351,503 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart24.png" alt="fileoutpart24.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart25.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 763,868 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart25.png" alt="fileoutpart25.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart26.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 520,439 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart26.png" alt="fileoutpart26.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item table-candidate">
+                    <h4 style="color: #28a745;">fileoutpart27.png</h4>
+                    <p><strong>OCR Potential: HIGH</strong></p>
+                    <p>Size: 604,033 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart27.png" alt="fileoutpart27.png" title="Click to view full size">
+                    <p><small>✅ Good for table extraction</small></p>
+                </div>
+        
+                <div class="figure-item low-potential">
+                    <h4 style="color: #6c757d;">fileoutpart3.png</h4>
+                    <p><strong>OCR Potential: LOW</strong></p>
+                    <p>Size: 528 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart3.png" alt="fileoutpart3.png" title="Click to view full size">
+                    <p><small>❌ Likely header/label</small></p>
+                </div>
+        
+                <div class="figure-item low-potential">
+                    <h4 style="color: #6c757d;">fileoutpart4.png</h4>
+                    <p><strong>OCR Potential: LOW</strong></p>
+                    <p>Size: 638 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart4.png" alt="fileoutpart4.png" title="Click to view full size">
+                    <p><small>❌ Likely header/label</small></p>
+                </div>
+        
+                <div class="figure-item low-potential">
+                    <h4 style="color: #6c757d;">fileoutpart5.png</h4>
+                    <p><strong>OCR Potential: LOW</strong></p>
+                    <p>Size: 636 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart5.png" alt="fileoutpart5.png" title="Click to view full size">
+                    <p><small>❌ Likely header/label</small></p>
+                </div>
+        
+                <div class="figure-item low-potential">
+                    <h4 style="color: #6c757d;">fileoutpart6.png</h4>
+                    <p><strong>OCR Potential: LOW</strong></p>
+                    <p>Size: 589 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart6.png" alt="fileoutpart6.png" title="Click to view full size">
+                    <p><small>❌ Likely header/label</small></p>
+                </div>
+        
+                <div class="figure-item low-potential">
+                    <h4 style="color: #6c757d;">fileoutpart7.png</h4>
+                    <p><strong>OCR Potential: LOW</strong></p>
+                    <p>Size: 617 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart7.png" alt="fileoutpart7.png" title="Click to view full size">
+                    <p><small>❌ Likely header/label</small></p>
+                </div>
+        
+                <div class="figure-item low-potential">
+                    <h4 style="color: #6c757d;">fileoutpart8.png</h4>
+                    <p><strong>OCR Potential: LOW</strong></p>
+                    <p>Size: 632 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart8.png" alt="fileoutpart8.png" title="Click to view full size">
+                    <p><small>❌ Likely header/label</small></p>
+                </div>
+        
+                <div class="figure-item low-potential">
+                    <h4 style="color: #6c757d;">fileoutpart9.png</h4>
+                    <p><strong>OCR Potential: LOW</strong></p>
+                    <p>Size: 585 bytes</p>
+                    <img src="output_advanced/messos 30.5/figures\fileoutpart9.png" alt="fileoutpart9.png" title="Click to view full size">
+                    <p><small>❌ Likely header/label</small></p>
+                </div>
+        
+                </div>
+            </div>
+            
+            <div class="section warning">
+                <h2>⚠️ Security-Price Matching Challenges</h2>
+                <h3>Key Concerns for Financial Accuracy:</h3>
+                <ul>
+                    <li><strong>Spatial Alignment:</strong> Securities and their prices must be correctly aligned in tables</li>
+                    <li><strong>Multi-column Tables:</strong> Complex financial tables with multiple data columns</li>
+                    <li><strong>Currency Identification:</strong> Ensuring prices are matched with correct currency (USD/EUR/CHF)</li>
+                    <li><strong>Table Headers:</strong> Distinguishing between headers and actual data rows</li>
+                    <li><strong>Page Breaks:</strong> Tables spanning multiple pages need careful handling</li>
+                </ul>
+                
+                <h3>Recommended Approach:</h3>
+                <ol>
+                    <li><strong>Manual Review First:</strong> Examine the HIGH potential images manually</li>
+                    <li><strong>Selective OCR:</strong> Process only images that clearly contain tabular data</li>
+                    <li><strong>Validation Step:</strong> Cross-reference extracted data with original PDF</li>
+                    <li><strong>Structured Output:</strong> Ensure OCR preserves row-column relationships</li>
+                </ol>
+            </div>
+            
+            <div class="section success">
+                <h2>✅ Next Steps</h2>
+                <p><strong>Based on the analysis:</strong></p>
+                <ul>
+                    <li>🎯 <strong>1 HIGH potential image</strong> (fileoutpart1.png - 1.9MB) - likely contains main financial table</li>
+                    <li>📊 <strong>23 MEDIUM potential images</strong> - may contain supporting data or charts</li>
+                    <li>🔍 <strong>Manual inspection recommended</strong> before OCR processing</li>
+                    <li>💰 <strong>Estimated OCR cost:</strong> $0.02-0.50 for selective processing</li>
+                </ul>
+                
+                <h3>Would you like to:</h3>
+                <ol>
+                    <li><strong>View the HIGH potential image</strong> to assess table structure?</li>
+                    <li><strong>Process with OCR</strong> to extract structured data?</li>
+                    <li><strong>Manual extraction</strong> from the key images?</li>
+                </ol>
+            </div>
+            
+        </div>
+    </body>
+    </html>
+    

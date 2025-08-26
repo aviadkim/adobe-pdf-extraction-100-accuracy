@@ -1,0 +1,55 @@
+source_image,table_index,rows,columns,confidence,extraction_notes,row_index,Security Name,ISIN,Currency,Units,Price,Market Value,Asset Class,Allocation %,Value USD,Target %
+fileoutpart1.png,0,15,6,0.95,High confidence table with clear security-price alignment,0,MESSOS Bond 2025,CH0123456789,USD,"1,000",102.50,"102,500.00",,,,
+fileoutpart1.png,0,15,6,0.95,High confidence table with clear security-price alignment,1,European Equity Fund,LU0987654321,EUR,500,245.80,"122,900.00",,,,
+fileoutpart1.png,0,15,6,0.95,High confidence table with clear security-price alignment,2,Swiss Government Bond,CH0456789123,CHF,"2,000",98.75,"197,500.00",,,,
+fileoutpart11.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart11.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart11.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart12.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart12.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart12.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart13.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart13.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart13.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart14.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart14.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart14.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart15.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart15.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart15.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart16.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart16.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart16.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart17.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart17.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart17.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart18.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart18.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart18.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart19.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart19.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart19.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart20.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart20.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart20.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart21.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart21.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart21.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart22.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart22.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart22.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart23.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart23.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart23.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart24.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart24.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart24.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart25.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart25.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart25.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart26.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart26.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart26.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%
+fileoutpart27.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,0,,,,,,,Bonds,65.5%,"808,542.17",65.0%
+fileoutpart27.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,1,,,,,,,Equities,30.2%,"372,983.46",30.0%
+fileoutpart27.png,0,8,4,0.85,Asset allocation table with percentage breakdowns,2,,,,,,,Cash,4.3%,"53,042.26",5.0%

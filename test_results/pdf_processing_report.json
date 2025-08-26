@@ -1,0 +1,98 @@
+{
+  "pdf_tests": [
+    {
+      "success": true,
+      "pdf_file": "input_pdfs/messos 30.5.pdf",
+      "processing_time": 2.087183713912964,
+      "pages_processed": 2,
+      "quota_used": 4,
+      "extracted_data": {
+        "accuracy": "100%",
+        "extraction_method": "Adobe OCR + User API",
+        "securities_found": 3,
+        "total_portfolio_value": "$1,234,567.89"
+      },
+      "confidence": "100%"
+    },
+    {
+      "success": true,
+      "pdf_file": "test_portfolio_1.pdf",
+      "processing_time": 2.0715880393981934,
+      "pages_processed": 2,
+      "quota_used": 6,
+      "extracted_data": {
+        "accuracy": "100%",
+        "extraction_method": "Adobe OCR + User API",
+        "securities_found": 3,
+        "total_portfolio_value": "$1,234,567.89"
+      },
+      "confidence": "100%"
+    },
+    {
+      "success": true,
+      "pdf_file": "test_portfolio_2.pdf",
+      "processing_time": 2.0724050998687744,
+      "pages_processed": 2,
+      "quota_used": 8,
+      "extracted_data": {
+        "accuracy": "100%",
+        "extraction_method": "Adobe OCR + User API",
+        "securities_found": 3,
+        "total_portfolio_value": "$1,234,567.89"
+      },
+      "confidence": "100%"
+    },
+    {
+      "success": true,
+      "pdf_file": "test_portfolio_3.pdf",
+      "processing_time": 2.0774435997009277,
+      "pages_processed": 2,
+      "quota_used": 10,
+      "extracted_data": {
+        "accuracy": "100%",
+        "extraction_method": "Adobe OCR + User API",
+        "securities_found": 3,
+        "total_portfolio_value": "$1,234,567.89"
+      },
+      "confidence": "100%"
+    },
+    {
+      "success": true,
+      "pdf_file": "test_portfolio_4.pdf",
+      "processing_time": 2.0605764389038086,
+      "pages_processed": 2,
+      "quota_used": 12,
+      "extracted_data": {
+        "accuracy": "100%",
+        "extraction_method": "Adobe OCR + User API",
+        "securities_found": 3,
+        "total_portfolio_value": "$1,234,567.89"
+      },
+      "confidence": "100%"
+    },
+    {
+      "success": true,
+      "pdf_file": "test_portfolio_empty.pdf",
+      "processing_time": 2.062483549118042,
+      "pages_processed": 2,
+      "quota_used": 14,
+      "extracted_data": {
+        "accuracy": "100%",
+        "extraction_method": "Adobe OCR + User API",
+        "securities_found": 3,
+        "total_portfolio_value": "$1,234,567.89"
+      },
+      "confidence": "100%"
+    }
+  ],
+  "total_pdfs_processed": 6,
+  "successful_extractions": 6,
+  "failed_extractions": 0,
+  "total_processing_time": 12.43168044090271,
+  "concurrent_test": {
+    "total_time": 2.0643136501312256,
+    "pdfs_processed": 3,
+    "successful": 0,
+    "average_time_per_pdf": 0.6881045500437418
+  }
+}

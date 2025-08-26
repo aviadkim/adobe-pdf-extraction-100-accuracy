@@ -1,0 +1,85 @@
+{
+  "securities": [
+    {
+      "name": "NATIXIS STRUC.NOTES 19-20.6.26 VRN ON 4,75%METLIFE",
+      "isin": "XS1700087403",
+      "quantity": "100'000",
+      "market_value": "21",
+      "price": "91.0217",
+      "performance": "0.83%",
+      "currency": "USD",
+      "maturity": "20.06.2026",
+      "valorn": "39877135",
+      "confidence_score": 1.0,
+      "source_page": 13
+    },
+    {
+      "name": "NOVUS CAPITAL CREDIT LINKED NOTES 2023-27.09.2029",
+      "isin": "XS2594173093",
+      "quantity": "200'000",
+      "market_value": "99.0592",
+      "price": "99.0592",
+      "performance": "-2.28%",
+      "currency": "USD",
+      "maturity": "27.09.2029",
+      "valorn": "125443809",
+      "confidence_score": 1.0,
+      "source_page": 13
+    },
+    {
+      "name": "NOVUS CAPITAL STRUCT.NOTE 2021-12.01.28 VRN ON NATWEST GROUP",
+      "isin": "XS2407295554",
+      "quantity": "500'000",
+      "market_value": "100.5243",
+      "price": "100.5243",
+      "performance": "3.88%",
+      "currency": "USD",
+      "maturity": "12.01.2028",
+      "valorn": "114718568",
+      "confidence_score": 1.0,
+      "source_page": 13
+    },
+    {
+      "name": "NOVUS CAPITAL STRUCTURED NOTES 20-15.05.26 ON CS",
+      "isin": "XS2252299883",
+      "quantity": "1'000'000",
+      "market_value": "100.3664",
+      "price": "100.3664",
+      "performance": "0.83%",
+      "currency": "USD",
+      "maturity": "15.05.2026",
+      "valorn": "58001077",
+      "confidence_score": 1.0,
+      "source_page": 13
+    },
+    {
+      "name": "EXIGENT ENHANCED INCOME FUND LTD SHS A SERIES 20",
+      "isin": "XD0466760473",
+      "quantity": "204.071",
+      "market_value": "1'008.3748",
+      "price": "204.071",
+      "performance": "0.00%",
+      "currency": "USO",
+      "maturity": null,
+      "valorn": "46676047",
+      "confidence_score": 1.0,
+      "source_page": 14
+    }
+  ],
+  "validation_report": {
+    "total_securities": 5,
+    "valid_securities": 5,
+    "high_confidence_securities": 5,
+    "field_completeness": {
+      "name": 100.0,
+      "isin": 100.0,
+      "quantity": 100.0,
+      "market_value": 100.0,
+      "price": 100.0,
+      "performance": 100.0
+    },
+    "overall_confidence": 1.0
+  },
+  "extraction_method": "intelligent_table_parsing",
+  "total_elements_processed": 1082
+}

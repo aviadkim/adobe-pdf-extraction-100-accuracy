@@ -1,0 +1,550 @@
+{
+  "extraction_summary": {
+    "total_securities_identified": 4,
+    "extraction_methods_used": [
+      "adobe",
+      "pattern",
+      "images",
+      "extraction_plan"
+    ],
+    "high_priority_images": 2,
+    "recommended_next_step": "automated_ocr_with_validation"
+  },
+  "all_securities": [
+    {
+      "name": "Equity Security from fileoutpart10.png",
+      "type": "equity",
+      "source": "pattern_analysis",
+      "confidence": 0.6,
+      "extraction_method": "estimated_from_image_analysis"
+    },
+    {
+      "name": "Bond Security from fileoutpart6.png",
+      "type": "bond",
+      "source": "pattern_analysis",
+      "confidence": 0.6,
+      "extraction_method": "estimated_from_image_analysis"
+    },
+    {
+      "name": "Securities from EQUITIES_SECTION (Page 10)",
+      "type": "equities",
+      "source_image": "fileoutpart10.png",
+      "extraction_method": "image_analysis_estimate",
+      "confidence": 0.7,
+      "file_size_kb": 2.5,
+      "securities_potential": "VERY_HIGH",
+      "requires_ocr": true
+    },
+    {
+      "name": "Securities from BONDS_SECTION (Page 6)",
+      "type": "bonds",
+      "source_image": "fileoutpart6.png",
+      "extraction_method": "image_analysis_estimate",
+      "confidence": 0.7,
+      "file_size_kb": 0.6,
+      "securities_potential": "VERY_HIGH",
+      "requires_ocr": true
+    }
+  ],
+  "extraction_methods": {
+    "adobe": {
+      "securities_found": [
+        {
+          "text": "Client Number// 366223 Valuation currency II USD Investment profile // Undefined Risk Profile // Medium-high -I dnHn• ±: :5:,* ±3: Ł I ",
+          "page": 0,
+          "confidence": 0,
+          "type": "text_based",
+          "bounds": [
+            -0.3074951171875,
+            40.37249755859375,
+            781.4400024414062,
+            586.4400024414062
+          ]
+        },
+        {
+          "text": "Bonds 6 ",
+          "page": 1,
+          "confidence": 0,
+          "type": "text_based",
+          "bounds": [
+            78.70950317382812,
+            366.4931945800781,
+            427.679443359375,
+            377.6907043457031
+          ]
+        }
+      ],
+      "csv_tables": [],
+      "extraction_summary": {
+        "total_securities": 2,
+        "csv_tables_found": 0,
+        "extraction_method": "adobe_enhanced_ocr"
+      }
+    },
+    "pattern": {
+      "extraction_summary": {
+        "images_processed": 20,
+        "securities_found": 2,
+        "bonds_found": 1,
+        "equities_found": 1,
+        "other_assets_found": 0
+      },
+      "all_securities": [
+        {
+          "name": "Equity Security from fileoutpart10.png",
+          "type": "equity",
+          "source": "pattern_analysis",
+          "confidence": 0.6,
+          "extraction_method": "estimated_from_image_analysis"
+        },
+        {
+          "name": "Bond Security from fileoutpart6.png",
+          "type": "bond",
+          "source": "pattern_analysis",
+          "confidence": 0.6,
+          "extraction_method": "estimated_from_image_analysis"
+        }
+      ],
+      "bonds": [
+        {
+          "name": "Bond Security from fileoutpart6.png",
+          "type": "bond",
+          "source": "pattern_analysis",
+          "confidence": 0.6,
+          "extraction_method": "estimated_from_image_analysis"
+        }
+      ],
+      "equities": [
+        {
+          "name": "Equity Security from fileoutpart10.png",
+          "type": "equity",
+          "source": "pattern_analysis",
+          "confidence": 0.6,
+          "extraction_method": "estimated_from_image_analysis"
+        }
+      ],
+      "other_assets": [],
+      "extraction_metadata": {
+        "extraction_date": "2025-01-22",
+        "extraction_method": "automated_ocr_multiple_sources",
+        "total_images_processed": 20
+      }
+    },
+    "images": {
+      "total_images": 28,
+      "priority_images": [
+        {
+          "filename": "fileoutpart10.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart10.png",
+          "file_number": 10,
+          "file_size": 2562,
+          "size_kb": 2.5,
+          "priority": 10,
+          "content_type": "EQUITIES_SECTION",
+          "securities_potential": "VERY_HIGH"
+        },
+        {
+          "filename": "fileoutpart6.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart6.png",
+          "file_number": 6,
+          "file_size": 589,
+          "size_kb": 0.6,
+          "priority": 10,
+          "content_type": "BONDS_SECTION",
+          "securities_potential": "VERY_HIGH"
+        },
+        {
+          "filename": "fileoutpart11.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart11.png",
+          "file_number": 11,
+          "file_size": 382151,
+          "size_kb": 373.2,
+          "priority": 9,
+          "content_type": "OTHER_ASSETS",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart12.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart12.png",
+          "file_number": 12,
+          "file_size": 403727,
+          "size_kb": 394.3,
+          "priority": 9,
+          "content_type": "OTHER_ASSETS",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart13.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart13.png",
+          "file_number": 13,
+          "file_size": 379612,
+          "size_kb": 370.7,
+          "priority": 9,
+          "content_type": "OTHER_ASSETS",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart1.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart1.png",
+          "file_number": 1,
+          "file_size": 1990086,
+          "size_kb": 1943.4,
+          "priority": 8,
+          "content_type": "SUMMARY_OVERVIEW",
+          "securities_potential": "MEDIUM"
+        },
+        {
+          "filename": "fileoutpart16.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart16.png",
+          "file_number": 16,
+          "file_size": 616947,
+          "size_kb": 602.5,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart17.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart17.png",
+          "file_number": 17,
+          "file_size": 612240,
+          "size_kb": 597.9,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart18.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart18.png",
+          "file_number": 18,
+          "file_size": 591029,
+          "size_kb": 577.2,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart19.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart19.png",
+          "file_number": 19,
+          "file_size": 507823,
+          "size_kb": 495.9,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart21.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart21.png",
+          "file_number": 21,
+          "file_size": 602139,
+          "size_kb": 588.0,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart22.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart22.png",
+          "file_number": 22,
+          "file_size": 557470,
+          "size_kb": 544.4,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart25.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart25.png",
+          "file_number": 25,
+          "file_size": 763868,
+          "size_kb": 746.0,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart26.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart26.png",
+          "file_number": 26,
+          "file_size": 520439,
+          "size_kb": 508.2,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart27.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart27.png",
+          "file_number": 27,
+          "file_size": 604033,
+          "size_kb": 589.9,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart14.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart14.png",
+          "file_number": 14,
+          "file_size": 375038,
+          "size_kb": 366.2,
+          "priority": 5,
+          "content_type": "MEDIUM_TABLE",
+          "securities_potential": "MEDIUM"
+        },
+        {
+          "filename": "fileoutpart15.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart15.png",
+          "file_number": 15,
+          "file_size": 393284,
+          "size_kb": 384.1,
+          "priority": 5,
+          "content_type": "MEDIUM_TABLE",
+          "securities_potential": "MEDIUM"
+        },
+        {
+          "filename": "fileoutpart20.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart20.png",
+          "file_number": 20,
+          "file_size": 360509,
+          "size_kb": 352.1,
+          "priority": 5,
+          "content_type": "MEDIUM_TABLE",
+          "securities_potential": "MEDIUM"
+        },
+        {
+          "filename": "fileoutpart23.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart23.png",
+          "file_number": 23,
+          "file_size": 365073,
+          "size_kb": 356.5,
+          "priority": 5,
+          "content_type": "MEDIUM_TABLE",
+          "securities_potential": "MEDIUM"
+        },
+        {
+          "filename": "fileoutpart24.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart24.png",
+          "file_number": 24,
+          "file_size": 351503,
+          "size_kb": 343.3,
+          "priority": 5,
+          "content_type": "MEDIUM_TABLE",
+          "securities_potential": "MEDIUM"
+        }
+      ],
+      "very_high_potential": [
+        {
+          "filename": "fileoutpart10.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart10.png",
+          "file_number": 10,
+          "file_size": 2562,
+          "size_kb": 2.5,
+          "priority": 10,
+          "content_type": "EQUITIES_SECTION",
+          "securities_potential": "VERY_HIGH"
+        },
+        {
+          "filename": "fileoutpart6.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart6.png",
+          "file_number": 6,
+          "file_size": 589,
+          "size_kb": 0.6,
+          "priority": 10,
+          "content_type": "BONDS_SECTION",
+          "securities_potential": "VERY_HIGH"
+        }
+      ],
+      "high_potential": [
+        {
+          "filename": "fileoutpart11.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart11.png",
+          "file_number": 11,
+          "file_size": 382151,
+          "size_kb": 373.2,
+          "priority": 9,
+          "content_type": "OTHER_ASSETS",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart12.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart12.png",
+          "file_number": 12,
+          "file_size": 403727,
+          "size_kb": 394.3,
+          "priority": 9,
+          "content_type": "OTHER_ASSETS",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart13.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart13.png",
+          "file_number": 13,
+          "file_size": 379612,
+          "size_kb": 370.7,
+          "priority": 9,
+          "content_type": "OTHER_ASSETS",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart16.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart16.png",
+          "file_number": 16,
+          "file_size": 616947,
+          "size_kb": 602.5,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart17.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart17.png",
+          "file_number": 17,
+          "file_size": 612240,
+          "size_kb": 597.9,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart18.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart18.png",
+          "file_number": 18,
+          "file_size": 591029,
+          "size_kb": 577.2,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart19.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart19.png",
+          "file_number": 19,
+          "file_size": 507823,
+          "size_kb": 495.9,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart21.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart21.png",
+          "file_number": 21,
+          "file_size": 602139,
+          "size_kb": 588.0,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart22.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart22.png",
+          "file_number": 22,
+          "file_size": 557470,
+          "size_kb": 544.4,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart25.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart25.png",
+          "file_number": 25,
+          "file_size": 763868,
+          "size_kb": 746.0,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart26.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart26.png",
+          "file_number": 26,
+          "file_size": 520439,
+          "size_kb": 508.2,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        },
+        {
+          "filename": "fileoutpart27.png",
+          "path": "output_advanced/messos 30.5/figures\\fileoutpart27.png",
+          "file_number": 27,
+          "file_size": 604033,
+          "size_kb": 589.9,
+          "priority": 7,
+          "content_type": "LARGE_TABLE",
+          "securities_potential": "HIGH"
+        }
+      ]
+    },
+    "extraction_plan": {
+      "automated_methods": [
+        {
+          "name": "Azure Computer Vision OCR",
+          "description": "Professional OCR with table recognition",
+          "cost": "FREE tier: 5,000 transactions/month",
+          "accuracy": "95-99% for financial documents",
+          "setup_time": "5 minutes",
+          "recommended": true,
+          "instructions": [
+            "Go to https://portal.azure.com",
+            "Create Computer Vision resource (FREE)",
+            "Get subscription key and endpoint",
+            "Run azure_ocr_extraction.py with credentials"
+          ]
+        },
+        {
+          "name": "Google Cloud Vision API",
+          "description": "Google's OCR with document understanding",
+          "cost": "FREE tier: 1,000 requests/month",
+          "accuracy": "90-95% for financial documents",
+          "setup_time": "10 minutes",
+          "recommended": true,
+          "instructions": [
+            "Go to https://console.cloud.google.com",
+            "Enable Vision API (FREE tier)",
+            "Create API key",
+            "Modify azure_ocr_extraction.py for Google API"
+          ]
+        },
+        {
+          "name": "AWS Textract",
+          "description": "Amazon's document analysis service",
+          "cost": "FREE tier: 1,000 pages/month",
+          "accuracy": "90-95% for tables",
+          "setup_time": "15 minutes",
+          "recommended": false,
+          "instructions": [
+            "Create AWS account",
+            "Enable Textract service",
+            "Get access keys",
+            "Create AWS Textract integration"
+          ]
+        }
+      ],
+      "hybrid_approach": {
+        "description": "Combine automated OCR with manual validation",
+        "steps": [
+          "Run automated OCR on high-priority images",
+          "Extract 80-90% of data automatically",
+          "Use manual interface for validation and missing data",
+          "Export complete, validated dataset"
+        ],
+        "time_estimate": "15-30 minutes total",
+        "accuracy": "99-100%"
+      },
+      "immediate_options": [
+        "Use existing manual extraction interface",
+        "Set up Azure OCR (5 minutes) for automated extraction",
+        "Process the 5 VERY HIGH priority images manually"
+      ]
+    }
+  },
+  "recommendations": {
+    "primary": "Use Azure Computer Vision OCR for automated extraction",
+    "fallback": "Use manual extraction interface",
+    "hybrid": "Combine automated OCR with manual validation"
+  }
+}
