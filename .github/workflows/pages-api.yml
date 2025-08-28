@@ -43,8 +43,6 @@ jobs:
         ADOBE_CLIENT_ID: ${{ secrets.ADOBE_CLIENT_ID }}
         ADOBE_CLIENT_SECRET: ${{ secrets.ADOBE_CLIENT_SECRET }}
       run: |
-        # Copy the real extraction script
-        cp real_adobe_extractor.py real_extractor.py
         
         python - << 'SCRIPT'
         import os
